@@ -236,10 +236,10 @@
     var list=ordered(), i=list.findIndex(function(x){return x.meta.licao===L.meta.licao;});
     var prev=list[i-1], next=list[i+1];
     var h='<div class="pager">';
-    h+= prev&&prev.pronta ? '<a href="#'+id(prev)+'"><div class="k">← Anterior</div><div class="p">'+esc(prev.hero.en)+'</div></a>'
+    h+= prev&&prev.disponivel ? '<a href="#'+id(prev)+'"><div class="k">← Anterior</div><div class="p">'+esc(prev.hero.en)+'</div></a>'
       : '<span class="disabled"><div class="k">← Anterior</div><div class="p">—</div></span>';
     if(next){
-      h+= next.pronta ? '<a class="next" href="#'+id(next)+'"><div class="k">Próxima →</div><div class="p">'+esc(next.hero.en)+'</div></a>'
+      h+= next.disponivel ? '<a class="next" href="#'+id(next)+'"><div class="k">Próxima →</div><div class="p">'+esc(next.hero.en)+'</div></a>'
         : '<span class="next disabled"><div class="k">Próxima (em breve)</div><div class="p">'+esc(next.hero.en)+'</div></span>';
     } else {
       h+='<span class="next disabled"><div class="k">Próxima →</div><div class="p">—</div></span>';
@@ -258,7 +258,7 @@
       var chap=byChap[c][0].meta;
       h+='<div class="chapter">Cap. '+c+' — '+esc(chap.capituloNome||'')+'</div>';
       byChap[c].forEach(function(L){
-        var sid=id(L), locked=!L.pronta;
+        var sid=id(L), locked=!L.disponivel;
         h+='<button class="tocitem'+(locked?' locked':'')+'" '+(locked?'disabled':'data-go="'+sid+'"')+
           (sid===cur?' aria-current="true"':'')+'>'+
           '<span class="num">'+String(L.meta.licao).padStart(2,'0')+'</span>'+
@@ -327,20 +327,49 @@
   }
   function norm(s){return (s||'').toLowerCase().replace(/[.,!?]/g,'').replace(/\s+/g,' ').trim();}
 
+  /* ---------- Carga dinâmica do conteúdo da lição ---------- */
+  var loading={};
+  function ensureLoaded(L){
+    return new Promise(function(resolve){
+      if(!L){return resolve(null);}
+      if(L.carregada){return resolve(L);}
+      if(!L.disponivel){return resolve(null);}
+      var sid=id(L);
+      if(loading[sid]){loading[sid].push(resolve);return;}
+      loading[sid]=[resolve];
+      var s=document.createElement('script');
+      s.src='licoes/'+sid+'.js';
+      s.onload=function(){var full=bySlug(sid);(loading[sid]||[]).forEach(function(fn){fn(full);});loading[sid]=null;};
+      s.onerror=function(){(loading[sid]||[]).forEach(function(fn){fn(null);});loading[sid]=null;};
+      document.head.appendChild(s);
+    });
+  }
+
   /* ---------- Router ---------- */
   function show(slug){
     var L=bySlug(slug)||ordered()[0];
     if(!L){$('#view').innerHTML='<p style="text-align:center;margin-top:4rem" class="note">Nenhuma lição carregada.</p>';return;}
-    if(!L.pronta){ // caiu numa bloqueada: volta pra primeira pronta
-      var first=ordered().filter(function(x){return x.pronta;})[0];
+    if(!L.disponivel){ // caiu numa lição ainda não escrita: volta pra primeira disponível
+      var first=ordered().filter(function(x){return x.disponivel;})[0];
       if(first){location.hash=id(first);return;}
     }
-    document.title='Lição '+L.meta.licao+' — '+L.hero.en+' · English Through My Routine';
     if(speechSynthesis)speechSynthesis.cancel();
-    $('#view').innerHTML=renderLesson(L);
-    wire(); buildTOC();
-    window.scrollTo(0,0);
     closeDrawer();
+    if(!L.carregada){
+      $('#view').innerHTML='<p style="text-align:center;margin-top:5rem" class="note">Carregando lição…</p>';
+    }
+    ensureLoaded(L).then(function(full){
+      var LL=full||L;
+      if((location.hash||'').replace('#','')!==id(LL) && bySlug((location.hash||'').replace('#',''))){return;} // usuário já mudou de lição
+      if(!full){
+        $('#view').innerHTML='<p style="text-align:center;margin-top:5rem" class="note">Não foi possível carregar esta lição. Verifique a conexão e tente de novo.</p>';
+        return;
+      }
+      document.title='Lição '+LL.meta.licao+' — '+LL.hero.en+' · English Through My Routine';
+      $('#view').innerHTML=renderLesson(LL);
+      wire(); buildTOC();
+      window.scrollTo(0,0);
+    });
   }
 
   /* ---------- Drawer ---------- */

@@ -1,11 +1,15 @@
-/* Índice do livro — sumário de todas as lições (stubs).
-   Cada licao-NN.js chama LIVRO.registrar(...) e substitui seu stub,
-   marcando-o como pronto. Assim o menu já mostra o livro inteiro. */
+/* Índice do livro — sumário de todas as lições (stubs) + quais já existem.
+   O conteúdo de cada lição é carregado DINAMICAMENTE por app.js (licoes/licao-NN.js).
+   >>> Para publicar uma lição nova: crie docs/licoes/licao-NN.js e adicione o
+       número N em DISPONIVEIS abaixo. Nada mais precisa mudar. <<< */
 window.LIVRO = (function(){
   var caps = {
     1:'Morning', 2:'Work & Breakfast', 3:'The Gym',
     4:'Lunch & Afternoon', 5:'Class, Sports & Therapy', 6:'Dinner & Night'
   };
+  // Lições já escritas (arquivo licao-NN.js existe):
+  var DISPONIVEIS = { 1:true, 2:true };
+
   // [ nº da lição, capítulo, frase em inglês ]
   var raw = [
     [1,1,"I wake up at 8 a.m."],
@@ -56,13 +60,20 @@ window.LIVRO = (function(){
     [46,6,"I usually go to sleep late every day."]
   ];
   var licoes = raw.map(function(r){
-    return { meta:{ licao:r[0], capitulo:r[1], capituloNome:caps[r[1]] }, hero:{ en:r[2] }, pronta:false };
+    return {
+      meta:{ licao:r[0], capitulo:r[1], capituloNome:caps[r[1]] },
+      hero:{ en:r[2] },
+      disponivel: !!DISPONIVEIS[r[0]],  // arquivo existe → clicável no índice
+      carregada: false                  // conteúdo completo já injetado?
+    };
   });
   return {
     licoes: licoes,
+    slug: function(n){ return 'licao-'+String(n).padStart(2,'0'); },
+    // chamado pelo próprio licao-NN.js ao ser carregado dinamicamente
     registrar: function(L){
       var self=this, i=self.licoes.findIndex(function(x){return x.meta.licao===L.meta.licao;});
-      L.pronta = true;
+      L.disponivel = true; L.carregada = true;
       if(i>=0){
         L.meta.capitulo = L.meta.capitulo || self.licoes[i].meta.capitulo;
         L.meta.capituloNome = L.meta.capituloNome || self.licoes[i].meta.capituloNome;
