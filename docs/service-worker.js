@@ -1,7 +1,7 @@
 /* Service Worker — offline para o app "English Through My Routine".
    Estratégia: cache-first para os recursos do app; ao publicar uma versão
    nova, suba o CACHE (v2, v3...) para forçar atualização nos aparelhos. */
-var CACHE = 'eng-routine-v1';
+var CACHE = 'eng-routine-v2';
 var ASSETS = [
   '.',
   'index.html',
@@ -10,6 +10,7 @@ var ASSETS = [
   'manifest.json',
   'licoes/_indice.js',
   'licoes/licao-01.js',
+  'licoes/licao-02.js',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/icon-maskable-512.png'

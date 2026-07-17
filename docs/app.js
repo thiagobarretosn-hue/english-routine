@@ -165,8 +165,11 @@
     }
     if(p5.length)out.push(part('V','Pratique','Agora é você. Ouça, escreva, confira.',p5));
 
-    // FOOTER: revisão + concluir + pager
+    // FOOTER: conexão + revisão + concluir + pager
     var foot='<footer>';
+    if(L.conexao){
+      foot+='<section class="blk" style="text-align:left"><h3><span class="ic">🔗</span>Conexão com o que você já sabe</h3><p>'+L.conexao+'</p></section>';
+    }
     if(L.revisao&&L.revisao.length){
       foot+='<section class="blk" style="text-align:left"><h3><span class="ic">📚</span>Mini revisão</h3><ul class="review note">'+
         L.revisao.map(function(r){return '<li>'+r+'</li>';}).join('')+'</ul></section>';
