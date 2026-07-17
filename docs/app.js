@@ -49,9 +49,12 @@
 
   /* ---------- Helpers de conteúdo ---------- */
   // frase em inglês clicável (com botão falar). 'say' opcional = texto a falar.
+  // O conteúdo aceita marcação simples (ex.: <strong> no -s da conjugação);
+  // o texto falado usa 'say' ou a frase sem as tags.
   function EN(text,say){
-    var span='<span class="en" data-say="'+esc(say||text)+'">'+esc(text)+'</span>';
-    return span;
+    var t=String(text==null?'':text);
+    var speakText = say!=null ? say : t.replace(/<[^>]+>/g,'');
+    return '<span class="en" data-say="'+esc(speakText)+'">'+t+'</span>';
   }
   function lineRow(o){ // {en, pt, tag, tagType, say}
     var tagHtml='';
