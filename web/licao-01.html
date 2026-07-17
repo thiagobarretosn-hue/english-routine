@@ -1,0 +1,516 @@
+<title>Lição 1 — I wake up at 8 a.m. · English Through My Routine</title>
+<style>
+  :root{
+    --bg:#FAF7F1; --surface:#FFFFFF; --ink:#211E1A; --muted:#6E665A;
+    --accent:#B87317; --accent-soft:#F1E4CE; --natural:#2F6D5B; --natural-soft:#DDECE5;
+    --err:#B23A2E; --err-soft:#F3DCD7; --line:#E7DFD1; --line-strong:#D8CDB8;
+    --glow1:#F6D9A0; --glow2:#FBEFD6;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Code",Consolas,monospace;
+    --maxw:44rem;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#16130D; --surface:#201C14; --ink:#EEE7D8; --muted:#A29A88;
+      --accent:#E0A54A; --accent-soft:#3A2E17; --natural:#77BFA3; --natural-soft:#1D2E27;
+      --err:#E0796B; --err-soft:#3A211C; --line:#2E2819; --line-strong:#3C3524;
+      --glow1:#4A3818; --glow2:#241C0F;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#FAF7F1; --surface:#FFFFFF; --ink:#211E1A; --muted:#6E665A;
+    --accent:#B87317; --accent-soft:#F1E4CE; --natural:#2F6D5B; --natural-soft:#DDECE5;
+    --err:#B23A2E; --err-soft:#F3DCD7; --line:#E7DFD1; --line-strong:#D8CDB8;
+    --glow1:#F6D9A0; --glow2:#FBEFD6;
+  }
+  :root[data-theme="dark"]{
+    --bg:#16130D; --surface:#201C14; --ink:#EEE7D8; --muted:#A29A88;
+    --accent:#E0A54A; --accent-soft:#3A2E17; --natural:#77BFA3; --natural-soft:#1D2E27;
+    --err:#E0796B; --err-soft:#3A211C; --line:#2E2819; --line-strong:#3C3524;
+    --glow1:#4A3818; --glow2:#241C0F;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--accent-soft);}
+  a{color:var(--accent);}
+
+  /* ---------- Top bar ---------- */
+  .bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:.75rem;
+    padding:.6rem clamp(1rem,4vw,2rem);background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .brand{font-family:var(--serif);font-weight:600;font-size:1rem;letter-spacing:.01em;
+    margin-right:auto;display:flex;align-items:center;gap:.55rem;}
+  .brand .dot{width:.55rem;height:.55rem;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,var(--glow1),var(--accent));box-shadow:0 0 10px var(--accent);}
+  .ctrl{display:flex;align-items:center;gap:.4rem;}
+  .btn{font-family:var(--sans);font-size:.8rem;color:var(--ink);background:var(--surface);
+    border:1px solid var(--line-strong);border-radius:999px;padding:.35rem .7rem;cursor:pointer;
+    display:inline-flex;align-items:center;gap:.35rem;transition:border-color .15s,background .15s;}
+  .btn:hover{border-color:var(--accent);}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:999px;overflow:hidden;background:var(--surface);}
+  .seg button{border:0;background:transparent;color:var(--muted);font-size:.75rem;padding:.32rem .6rem;cursor:pointer;font-family:var(--mono);}
+  .seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);font-weight:700;}
+
+  /* ---------- Layout ---------- */
+  main{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1rem,5vw,1.5rem) 5rem;}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);display:flex;gap:.6rem;align-items:center;}
+  .eyebrow::after{content:"";height:1px;flex:1;background:var(--line);}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;padding:3.2rem 0 2.4rem;text-align:center;overflow:hidden;}
+  .hero .sun{position:absolute;left:50%;top:-4rem;transform:translateX(-50%);width:min(90vw,34rem);height:22rem;
+    background:radial-gradient(ellipse at center,var(--glow1) 0%,var(--glow2) 38%,transparent 70%);
+    filter:blur(6px);opacity:.85;z-index:0;pointer-events:none;}
+  .hero>*{position:relative;z-index:1;}
+  .hero .time{font-family:var(--mono);font-size:.8rem;color:var(--muted);letter-spacing:.2em;margin-bottom:1.1rem;}
+  .phrase-en{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:-.01em;
+    font-size:clamp(2.1rem,7vw,3.4rem);text-wrap:balance;margin:.2rem 0 .3rem;}
+  .phrase-pt{font-size:1.05rem;color:var(--muted);font-style:italic;}
+  .play-big{margin-top:1.6rem;border:1px solid var(--accent);background:var(--accent-soft);color:var(--accent);
+    font-family:var(--sans);font-weight:600;font-size:.95rem;border-radius:999px;padding:.6rem 1.3rem;cursor:pointer;
+    display:inline-flex;align-items:center;gap:.55rem;transition:transform .12s;}
+  .play-big:hover{transform:translateY(-1px);}
+  .play-big:active{transform:translateY(0);}
+  .play-big.speaking{animation:pulse 1s ease-in-out infinite;}
+  @keyframes pulse{50%{box-shadow:0 0 0 6px var(--accent-soft);}}
+
+  /* ---------- Parts & sections ---------- */
+  .part{margin-top:3.2rem;}
+  .part-head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:.4rem;}
+  .part-idx{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:700;}
+  .part-title{font-family:var(--serif);font-size:1.55rem;font-weight:600;letter-spacing:-.01em;}
+  .part-sub{color:var(--muted);font-size:.95rem;margin-top:-.1rem;}
+
+  section.blk{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:1.3rem 1.35rem;margin-top:1.1rem;}
+  section.blk h3{margin:0 0 .5rem;font-family:var(--sans);font-size:1.02rem;font-weight:700;
+    display:flex;align-items:center;gap:.5rem;letter-spacing:.005em;}
+  section.blk h3 .ic{font-size:1.05rem;line-height:1;}
+  section.blk p{margin:.5rem 0;}
+  .note{color:var(--muted);font-size:.92rem;}
+
+  /* English inline phrase w/ speaker */
+  .en{font-family:var(--serif);font-weight:600;color:var(--ink);}
+  .say{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;
+    width:1.35rem;height:1.35rem;margin-left:.15rem;border:0;background:transparent;color:var(--accent);
+    cursor:pointer;border-radius:50%;transition:background .15s;flex:none;}
+  .say:hover{background:var(--accent-soft);}
+  .say:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+  .say svg{width:.95rem;height:.95rem;}
+  .line{display:flex;align-items:flex-start;gap:.5rem;padding:.32rem 0;border-bottom:1px dashed var(--line);}
+  .line:last-child{border-bottom:0;}
+  .line .en{flex:1;}
+  .line .tr{color:var(--muted);font-family:var(--sans);font-weight:400;font-style:italic;font-size:.9rem;flex:1;}
+
+  /* Tables */
+  .twrap{overflow-x:auto;margin:.7rem 0;}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;}
+  th,td{text-align:left;padding:.5rem .7rem;border-bottom:1px solid var(--line);}
+  thead th{background:var(--accent-soft);color:var(--accent);font-family:var(--mono);
+    font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--line-strong);}
+  td .en{font-size:1rem;}
+  tr.hl td{background:var(--accent-soft);}
+  .tag{font-family:var(--mono);font-size:.72rem;padding:.05rem .4rem;border-radius:5px;background:var(--accent-soft);color:var(--accent);}
+  .tag.n{background:var(--natural-soft);color:var(--natural);}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;}
+  @media (max-width:560px){.grid2{grid-template-columns:1fr;}}
+  .card{border:1px solid var(--line);border-radius:11px;padding:.8rem .9rem;background:var(--bg);}
+  .card .k{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+  .ipa{font-family:var(--mono);color:var(--accent);}
+  .wrong{color:var(--err);text-decoration:line-through;text-decoration-color:var(--err);}
+  .right{color:var(--natural);}
+  .badpill,.goodpill{font-family:var(--mono);font-size:.7rem;padding:.05rem .45rem;border-radius:5px;}
+  .badpill{background:var(--err-soft);color:var(--err);}
+  .goodpill{background:var(--natural-soft);color:var(--natural);}
+
+  /* Dialogue */
+  .dlg{display:flex;flex-direction:column;gap:.55rem;}
+  .turn{display:flex;gap:.6rem;align-items:flex-start;}
+  .who{font-family:var(--mono);font-size:.7rem;color:var(--muted);width:2.4rem;flex:none;padding-top:.2rem;text-transform:uppercase;}
+  .bubble{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:.5rem .8rem;}
+  .bubble .tr{color:var(--muted);font-size:.85rem;font-style:italic;margin-top:.15rem;}
+
+  /* Exercises */
+  .ex{margin-top:.9rem;}
+  .ex .q{font-weight:600;margin-bottom:.4rem;}
+  .fill{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;}
+  input[type=text]{font-family:var(--sans);font-size:1rem;padding:.45rem .7rem;border:1px solid var(--line-strong);
+    border-radius:9px;background:var(--bg);color:var(--ink);min-width:8rem;}
+  input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
+  input.ok{border-color:var(--natural);background:var(--natural-soft);}
+  input.no{border-color:var(--err);background:var(--err-soft);}
+  .fb{font-size:.85rem;margin-top:.35rem;min-height:1.1rem;}
+  .fb.ok{color:var(--natural);} .fb.no{color:var(--err);}
+  .reveal{margin-top:.4rem;}
+  .answer{display:none;margin-top:.5rem;padding:.5rem .7rem;border-left:3px solid var(--natural);background:var(--natural-soft);border-radius:0 8px 8px 0;}
+  .answer.show{display:block;}
+  .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0;}
+  .chip{font-family:var(--serif);font-weight:600;background:var(--accent-soft);color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:8px;padding:.25rem .6rem;font-size:.95rem;}
+
+  /* Flashcard recall */
+  .flip{perspective:1000px;}
+  .flip .inner{position:relative;transition:transform .5s;transform-style:preserve-3d;min-height:6rem;cursor:pointer;}
+  .flip.on .inner{transform:rotateY(180deg);}
+  .face{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:12px;
+    padding:1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--bg);}
+  .face.back{transform:rotateY(180deg);background:var(--accent-soft);}
+
+  .callout{border-left:3px solid var(--accent);background:var(--accent-soft);padding:.7rem .9rem;border-radius:0 10px 10px 0;margin:.8rem 0;}
+  .review li{margin:.3rem 0;}
+
+  footer{margin-top:3.5rem;border-top:1px solid var(--line);padding-top:1.6rem;text-align:center;color:var(--muted);}
+  .nextcard{display:inline-flex;flex-direction:column;gap:.3rem;background:var(--surface);border:1px solid var(--line);
+    border-radius:14px;padding:1.1rem 1.5rem;margin-top:.8rem;}
+  .nextcard .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+  .nextcard .p{font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--ink);}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+  @media print{.bar,.play-big,.say,.ctrl,.no-print{display:none!important;}
+    body{background:#fff;color:#000;font-size:12px;} .answer{display:block!important;} section.blk{break-inside:avoid;}}
+</style>
+
+<div class="bar no-print">
+  <div class="brand"><span class="dot"></span>English Through My Routine</div>
+  <div class="ctrl">
+    <div class="seg" role="group" aria-label="Velocidade do áudio">
+      <button data-rate="0.7">0.7×</button>
+      <button data-rate="0.85" aria-pressed="true">0.85×</button>
+      <button data-rate="1">1×</button>
+    </div>
+    <button class="btn" id="theme" aria-label="Alternar tema">◐ Tema</button>
+  </div>
+</div>
+
+<main>
+  <header class="hero">
+    <div class="sun"></div>
+    <div class="time">VOLUME 1 · CAP. 1 — MORNING · LIÇÃO 01</div>
+    <div class="phrase-en" id="heroPhrase">I wake up at 8&nbsp;a.m.</div>
+    <div class="phrase-pt">Eu acordo às 8:00 da manhã.</div>
+    <button class="play-big" id="playHero">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Ouvir a frase
+    </button>
+    <p class="note" style="margin-top:1rem">Toque no <strong>▶</strong> ou em qualquer <span style="color:var(--accent)">🔊</span> para ouvir a pronúncia. Ajuste a velocidade no topo.</p>
+  </header>
+
+  <!-- PART I -->
+  <div class="part">
+    <div class="part-head"><span class="part-idx">I</span><span class="part-title">A Frase</span></div>
+    <div class="part-sub">O que ela diz, como se monta e o molde que ela te ensina.</div>
+
+    <section class="blk">
+      <h3><span class="ic">📚</span>Natural × Literal</h3>
+      <p>Aqui a tradução natural e a literal são quase idênticas — é exatamente assim que um americano fala.</p>
+      <div class="grid2">
+        <div class="card"><div class="k">Natural 🇺🇸</div><span class="en" data-say="I wake up at 8 a.m.">I wake up at 8 a.m.</span></div>
+        <div class="card"><div class="k">Literal 🇧🇷</div>Eu acordo às 8 da manhã.</div>
+      </div>
+      <p class="note">Detalhe fino: em inglês <span class="en" data-say="a.m.">a.m.</span> já significa “da manhã”, então você <em>não</em> diz <span class="wrong">in the morning</span> junto. <span class="en" data-say="8 a.m.">8 a.m.</span> = 8 da manhã, ponto.</p>
+    </section>
+
+    <section class="blk">
+      <h3><span class="ic">🧩</span>Estrutura — peça por peça</h3>
+      <div class="twrap"><table>
+        <thead><tr><th>Palavra</th><th>Classe</th><th>Função</th><th>Tradução</th></tr></thead>
+        <tbody>
+          <tr><td><span class="en" data-say="I">I</span></td><td>pronome</td><td>quem faz a ação</td><td>eu</td></tr>
+          <tr class="hl"><td><span class="en" data-say="wake up">wake up</span></td><td>phrasal verb</td><td>o verbo (a ação)</td><td>acordar</td></tr>
+          <tr><td><span class="en" data-say="at">at</span></td><td>preposição</td><td>marca o horário exato</td><td>às</td></tr>
+          <tr><td><span class="en" data-say="8 a.m.">8 a.m.</span></td><td>expressão de tempo</td><td>o horário</td><td>8 da manhã</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><strong>wake up</strong> é um <em>phrasal verb</em>: verbo + partícula que andam juntos. <span class="en" data-say="wake">wake</span> sozinho (“despertar”) soa incompleto na rotina; o natural é sempre <span class="en" data-say="wake up">wake up</span>.</p>
+    </section>
+
+    <section class="blk">
+      <h3><span class="ic">🧠</span>O molde (o mais importante)</h3>
+      <p>Não decore a frase. Guarde o <strong>molde</strong>. Trocando só o verbo você gera dezenas de frases:</p>
+      <div class="callout"><strong style="font-family:var(--mono)">I + verbo + at + horário</strong></div>
+      <div class="line"><span class="en" data-say="I start work at 8.">I start work at 8.</span><span class="tr">Eu começo a trabalhar às 8.</span></div>
+      <div class="line"><span class="en" data-say="I leave at 6.">I leave at 6.</span><span class="tr">Eu saio às 6.</span></div>
+      <div class="line"><span class="en" data-say="I have lunch at noon.">I have lunch at noon.</span><span class="tr">Eu almoço ao meio-dia.</span></div>
+      <p class="note">Mesma estrutura, verbos diferentes. Você aprendeu um <em>padrão</em>, não uma frase.</p>
+    </section>
+  </div>
+
+  <!-- PART II -->
+  <div class="part">
+    <div class="part-head"><span class="part-idx">II</span><span class="part-title">A Mecânica</span></div>
+    <div class="part-sub">Como a frase muda de pessoa e de tempo verbal.</div>
+
+    <section class="blk">
+      <h3><span class="ic">👥</span>Conjugação — só uma coisa muda</h3>
+      <p>No Simple Present, apenas <strong>he / she / it</strong> ganham <strong>-s</strong> no verbo. O resto é igual.</p>
+      <div class="twrap"><table>
+        <thead><tr><th>Pessoa</th><th>Frase</th><th>Tradução</th></tr></thead>
+        <tbody>
+          <tr><td>I</td><td><span class="en" data-say="I wake up at 8.">I wake up</span></td><td>eu acordo</td></tr>
+          <tr><td>you</td><td><span class="en" data-say="You wake up at 8.">you wake up</span></td><td>você acorda</td></tr>
+          <tr><td>we</td><td><span class="en" data-say="We wake up at 8.">we wake up</span></td><td>nós acordamos</td></tr>
+          <tr><td>they</td><td><span class="en" data-say="They wake up at 8.">they wake up</span></td><td>eles acordam</td></tr>
+          <tr class="hl"><td>he</td><td><span class="en" data-say="He wakes up at 8.">he wake<strong>s</strong> up</span></td><td>ele acorda</td></tr>
+          <tr class="hl"><td>she</td><td><span class="en" data-say="She wakes up at 8.">she wake<strong>s</strong> up</span></td><td>ela acorda</td></tr>
+          <tr class="hl"><td>it</td><td><span class="en" data-say="It wakes up at 8.">it wake<strong>s</strong> up</span></td><td>ele/ela (coisa/animal) acorda</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="blk">
+      <h3><span class="ic">🔀</span>Negativa, pergunta e os outros tempos</h3>
+      <p>Repare no “ajudante” (<span class="en" data-say="do">do</span> / <span class="en" data-say="does">does</span> / <span class="en" data-say="did">did</span> / <span class="en" data-say="will">will</span>). Quando ele aparece, o verbo principal volta à forma base (sem <strong>-s</strong>).</p>
+      <div class="line"><span class="badpill">neg</span><span class="en" data-say="I don't wake up at 8.">I don't wake up at 8.</span><span class="tr">Eu não acordo às 8.</span></div>
+      <div class="line"><span class="badpill">?</span><span class="en" data-say="Do you wake up at 8?">Do you wake up at 8?</span><span class="tr">Você acorda às 8?</span></div>
+      <div class="line"><span class="tag">passado</span><span class="en" data-say="I woke up at 8.">I woke up at 8.</span><span class="tr">Eu acordei às 8. (wake → woke, irregular)</span></div>
+      <div class="line"><span class="tag">futuro</span><span class="en" data-say="I will wake up at 8.">I will wake up at 8.</span><span class="tr">Eu vou acordar às 8.</span></div>
+      <p class="note">Passado e futuro aparecem aqui como <em>prévia</em> — eles ganham capítulos inteiros nos Volumes 2 e 3, reencontrando esta mesma frase.</p>
+    </section>
+  </div>
+
+  <!-- PART III -->
+  <div class="part">
+    <div class="part-head"><span class="part-idx">III</span><span class="part-title">Como Americanos Falam</span></div>
+    <div class="part-sub">O inglês de verdade, além da frase de livro.</div>
+
+    <section class="blk">
+      <h3><span class="ic">🇺🇸</span>Speak Naturally</h3>
+      <p>Todas dizem a mesma ideia. Ouça e escolha sua favorita:</p>
+      <div class="line"><span class="en" data-say="I usually wake up around 8.">I usually wake up around 8.</span><span class="tr">Normalmente acordo por volta das 8.</span></div>
+      <div class="line"><span class="en" data-say="I'm usually up by 8.">I'm usually up by 8.</span><span class="tr">Normalmente já estou de pé às 8.</span></div>
+      <div class="line"><span class="en" data-say="I get up around 8.">I get up around 8.</span><span class="tr">Eu me levanto por volta das 8.</span></div>
+      <div class="line"><span class="en" data-say="I wake up pretty early.">I wake up pretty early.</span><span class="tr">Eu acordo bem cedo.</span></div>
+      <div class="line"><span class="en" data-say="I'm an early riser.">I'm an early riser.</span><span class="tr">Sou de acordar cedo.</span></div>
+      <p class="note"><strong>wake up</strong> = abrir os olhos. <strong>get up</strong> = sair da cama. Americanos usam os dois o tempo todo.</p>
+    </section>
+
+    <section class="blk">
+      <h3><span class="ic">💬</span>Expressões com <span class="en" data-say="wake up">wake up</span></h3>
+      <div class="grid2">
+        <div class="card"><span class="en" data-say="wake up early">wake up early</span><div class="tr">acordar cedo</div></div>
+        <div class="card"><span class="en" data-say="wake up late">wake up late</span><div class="tr">acordar tarde</div></div>
+        <div class="card"><span class="en" data-say="wake up tired">wake up tired</span><div class="tr">acordar cansado</div></div>
+        <div class="card"><span class="en" data-say="wake up refreshed">wake up refreshed</span><div class="tr">acordar descansado</div></div>
+      </div>
+    </section>
+
+    <section class="blk">
+      <h3><span class="ic">📝</span>Vocabulário & 🔊 Pronúncia</h3>
+      <div class="twrap"><table>
+        <thead><tr><th>Palavra</th><th>IPA</th><th>Soa como</th><th>Sentido</th></tr></thead>
+        <tbody>
+          <tr><td><span class="en" data-say="wake up">wake up</span></td><td class="ipa">/weɪk ʌp/</td><td>“uêik âp”</td><td>acordar</td></tr>
+          <tr><td><span class="en" data-say="at">at</span></td><td class="ipa">/æt/</td><td>“ét”</td><td>às (horário)</td></tr>
+          <tr><td><span class="en" data-say="a.m.">a.m.</span></td><td class="ipa">/ˌeɪ ˈɛm/</td><td>“êi ém”</td><td>da manhã</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Frase inteira: <span class="ipa">/aɪ weɪk ʌp æt eɪt eɪ ˈɛm/</span>. Na fala rápida, o <strong>t</strong> de <span class="en" data-say="at">at</span> quase some — vira “a(t)_eight”.</p>
+      <div class="callout note"><strong>⭐ Cultura:</strong> a pergunta que você vai ouvir é <span class="en" data-say="What time do you usually wake up?">What time do you usually wake up?</span> (“Que horas você costuma acordar?”). Responder <span class="en" data-say="I usually wake up around 8.">I usually wake up around 8.</span> soa muito mais natural do que só “I wake up at 8”.</div>
+    </section>
+  </div>
+
+  <!-- PART IV -->
+  <div class="part">
+    <div class="part-head"><span class="part-idx">IV</span><span class="part-title">Erros & Memória</span></div>
+    <div class="part-sub">O que brasileiro erra aqui — e como nunca mais esquecer.</div>
+
+    <section class="blk">
+      <h3><span class="ic">⚠️</span>Erros comuns de brasileiros</h3>
+      <div class="line"><span class="badpill">errado</span><span class="wrong">I am wake up at 8.</span><span class="tr">Não existe “am” aqui. O presente simples não usa <em>to be</em> + verbo.</span></div>
+      <div class="line"><span class="goodpill">certo</span><span class="en right" data-say="I wake up at 8.">I wake up at 8.</span><span class="tr">—</span></div>
+      <div class="line"><span class="badpill">errado</span><span class="wrong">He wake up.</span><span class="tr">Faltou o -s da 3ª pessoa.</span></div>
+      <div class="line"><span class="goodpill">certo</span><span class="en right" data-say="He wakes up.">He wakes up.</span><span class="tr">—</span></div>
+      <div class="line"><span class="badpill">errado</span><span class="wrong">I wake up at 8 in the morning a.m.</span><span class="tr"><span class="en" data-say="a.m.">a.m.</span> já é “da manhã”. Escolha um dos dois.</span></div>
+    </section>
+
+    <section class="blk">
+      <h3><span class="ic">🎯</span>Dica de memorização</h3>
+      <p>Visualize sua manhã como uma <strong>linha do tempo</strong>, não como palavras soltas:</p>
+      <div class="chips">
+        <span class="chip" data-say="wake up">wake up</span>
+        <span class="chip" data-say="brush my teeth">brush my teeth</span>
+        <span class="chip" data-say="make my bed">make my bed</span>
+        <span class="chip" data-say="have breakfast">have breakfast</span>
+      </div>
+      <p class="note">Toque em cada uma. Ver a ação acontecer fixa muito mais rápido do que traduzir palavra por palavra — e já te dá o gancho para as próximas lições.</p>
+    </section>
+  </div>
+
+  <!-- PART V -->
+  <div class="part">
+    <div class="part-head"><span class="part-idx">V</span><span class="part-title">Pratique</span></div>
+    <div class="part-sub">Agora é você. Ouça, escreva, confira.</div>
+
+    <section class="blk">
+      <h3><span class="ic">🗣️</span>Mini-diálogo</h3>
+      <div class="dlg">
+        <div class="turn"><span class="who">A</span><div class="bubble"><span class="en" data-say="Hey, what time do you usually wake up?">Hey, what time do you usually wake up?</span><div class="tr">Ei, que horas você costuma acordar?</div></div></div>
+        <div class="turn"><span class="who">B</span><div class="bubble"><span class="en" data-say="I usually wake up at 8. What about you?">I usually wake up at 8. What about you?</span><div class="tr">Normalmente acordo às 8. E você?</div></div></div>
+        <div class="turn"><span class="who">A</span><div class="bubble"><span class="en" data-say="I'm an early riser. I'm up by 6.">I'm an early riser. I'm up by 6.</span><div class="tr">Eu acordo cedo. Estou de pé às 6.</div></div></div>
+      </div>
+    </section>
+
+    <section class="blk">
+      <h3><span class="ic">🏋️</span>Exercícios</h3>
+
+      <div class="ex" data-check="wake">
+        <div class="q">1. Complete:</div>
+        <div class="fill"><span>I</span><input type="text" placeholder="?" aria-label="verbo"><span>up at 8 a.m.</span>
+          <button class="btn checkbtn">Verificar</button></div>
+        <div class="fb"></div>
+      </div>
+
+      <div class="ex" data-check="he wakes up">
+        <div class="q">2. Complete (cuidado com a 3ª pessoa):</div>
+        <div class="fill"><span>He</span><input type="text" placeholder="?" aria-label="frase" style="min-width:11rem"><span>at 7.</span>
+          <button class="btn checkbtn">Verificar</button></div>
+        <div class="fb"></div>
+        <div class="note" style="margin-top:.3rem">Dica: dois verbos, e um deles leva -s.</div>
+      </div>
+
+      <div class="ex">
+        <div class="q">3. Reorganize as peças:</div>
+        <div class="chips"><span class="chip">up</span><span class="chip">wake</span><span class="chip">I</span><span class="chip">at</span><span class="chip">8</span><span class="chip">a.m.</span></div>
+        <button class="btn revealbtn">Ver resposta</button>
+        <div class="answer"><span class="en" data-say="I wake up at 8 a.m.">I wake up at 8 a.m.</span></div>
+      </div>
+
+      <div class="ex">
+        <div class="q">4. Traduza para o inglês:</div>
+        <p class="note" style="margin:.2rem 0">“Eu não acordo tarde.”</p>
+        <button class="btn revealbtn">Ver resposta</button>
+        <div class="answer"><span class="en" data-say="I don't wake up late.">I don't wake up late.</span></div>
+      </div>
+
+      <div class="ex">
+        <div class="q">5. Transforme <span class="en" data-say="I wake up at 8 a.m.">I wake up at 8 a.m.</span> em:</div>
+        <button class="btn revealbtn">Ver as 4 formas</button>
+        <div class="answer">
+          <div class="line"><span class="badpill">neg</span><span class="en" data-say="I don't wake up at 8 a.m.">I don't wake up at 8 a.m.</span></div>
+          <div class="line"><span class="badpill">?</span><span class="en" data-say="Do you wake up at 8 a.m.?">Do you wake up at 8 a.m.?</span></div>
+          <div class="line"><span class="tag">passado</span><span class="en" data-say="I woke up at 8 a.m.">I woke up at 8 a.m.</span></div>
+          <div class="line"><span class="tag">futuro</span><span class="en" data-say="I will wake up at 8 a.m.">I will wake up at 8 a.m.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk">
+      <h3><span class="ic">🔁</span>Puxando da memória</h3>
+      <p class="note">Leia o português, diga o inglês em voz alta, <em>depois</em> vire o cartão para conferir e ouvir.</p>
+      <div class="flip" id="fc1"><div class="inner">
+        <div class="face front"><div>Normalmente acordo por volta das 8.</div><div class="note" style="margin-top:.5rem">toque para virar</div></div>
+        <div class="face back"><span class="en" data-say="I usually wake up around 8.">I usually wake up around 8.</span></div>
+      </div></div>
+    </section>
+  </div>
+
+  <footer>
+    <section class="blk" style="text-align:left">
+      <h3><span class="ic">📚</span>Mini revisão</h3>
+      <ul class="review note">
+        <li>O molde <strong>I + verbo + at + horário</strong> gera dezenas de frases.</li>
+        <li><strong>wake up</strong> (abrir os olhos) ≠ <strong>get up</strong> (sair da cama).</li>
+        <li>Só <strong>he/she/it</strong> ganham <strong>-s</strong>; com do/does/did/will o verbo volta à base.</li>
+        <li><strong>at</strong> marca horário exato; <strong>a.m.</strong> já significa “da manhã”.</li>
+      </ul>
+    </section>
+    <div class="k" style="font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-top:1.5rem">Próxima lição</div>
+    <div class="nextcard">
+      <span class="p">I brush my teeth after I wake up.</span>
+      <span class="note">Estreia a estrutura <strong>after + oração</strong> — e reusa o <span class="en" data-say="wake up">wake up</span> que você acabou de aprender.</span>
+    </div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  // ---------- Theme ----------
+  var root=document.documentElement;
+  document.getElementById('theme').addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur){cur=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
+    root.setAttribute('data-theme', cur==='dark'?'light':'dark');
+  });
+
+  // ---------- Speech ----------
+  var rate=0.85, voices=[], preferred=null;
+  function loadVoices(){
+    voices=(window.speechSynthesis&&speechSynthesis.getVoices())||[];
+    preferred=voices.find(function(v){return /en[-_]US/i.test(v.lang)&&/female|samantha|aria|jenny|zira|google/i.test(v.name);})
+      || voices.find(function(v){return /en[-_]US/i.test(v.lang);})
+      || voices.find(function(v){return /^en/i.test(v.lang);}) || null;
+  }
+  if(window.speechSynthesis){ loadVoices(); speechSynthesis.onvoiceschanged=loadVoices; }
+  function speak(text,btn){
+    if(!window.speechSynthesis){return;}
+    speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(text);
+    u.lang='en-US'; u.rate=rate; if(preferred)u.voice=preferred;
+    if(btn){u.onstart=function(){btn.classList.add('speaking');};
+      u.onend=u.onerror=function(){btn.classList.remove('speaking');};}
+    speechSynthesis.speak(u);
+  }
+
+  // rate control
+  Array.prototype.forEach.call(document.querySelectorAll('.seg button'),function(b){
+    b.addEventListener('click',function(){
+      rate=parseFloat(b.getAttribute('data-rate'));
+      Array.prototype.forEach.call(document.querySelectorAll('.seg button'),function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true');
+    });
+  });
+
+  // hero
+  document.getElementById('playHero').addEventListener('click',function(){speak('I wake up at 8 a.m.',this);});
+
+  // speaker icon SVG
+  var SPK='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2a4.5 4.5 0 00-2.5-4v8a4.5 4.5 0 002.5-4zM14 3.2v2.1a7 7 0 010 13.4v2.1a9 9 0 000-17.6z"/></svg>';
+  // attach speakers to every [data-say]
+  Array.prototype.forEach.call(document.querySelectorAll('[data-say]'),function(el){
+    var txt=el.getAttribute('data-say');
+    if(el.classList.contains('chip')){ // chips: click whole chip
+      el.style.cursor='pointer'; el.setAttribute('role','button'); el.setAttribute('tabindex','0');
+      el.addEventListener('click',function(){speak(txt,el);});
+      el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();speak(txt,el);}});
+      return;
+    }
+    var b=document.createElement('button');
+    b.className='say'; b.type='button'; b.setAttribute('aria-label','Ouvir: '+txt); b.innerHTML=SPK;
+    b.addEventListener('click',function(e){e.stopPropagation();speak(txt,b);});
+    el.insertAdjacentElement('afterend',b);
+  });
+
+  // ---------- Exercises ----------
+  function norm(s){return (s||'').toLowerCase().replace(/[.,!?]/g,'').replace(/\s+/g,' ').trim();}
+  Array.prototype.forEach.call(document.querySelectorAll('.ex[data-check]'),function(ex){
+    var want=norm(ex.getAttribute('data-check'));
+    var input=ex.querySelector('input'), fb=ex.querySelector('.fb'), btn=ex.querySelector('.checkbtn');
+    function check(){
+      var got=norm(input.value);
+      var ok = got===want || (want==='wake'&&got==='wake up'?false:false) || got===want;
+      if(got===want){input.className='ok';fb.className='fb ok';fb.textContent='✓ Perfeito!';speak(input.value.trim()||want);}
+      else{input.className='no';fb.className='fb no';fb.textContent='Ainda não — tente de novo. (dica: sem to be, olhe o -s)';}
+    }
+    btn.addEventListener('click',check);
+    input.addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.revealbtn'),function(b){
+    b.addEventListener('click',function(){
+      var ans=b.parentElement.querySelector('.answer');
+      ans.classList.toggle('show');
+      b.textContent=ans.classList.contains('show')?'Esconder':b.textContent.replace('Esconder','Ver resposta');
+    });
+  });
+  // flashcard
+  var fc=document.getElementById('fc1');
+  fc.addEventListener('click',function(){fc.classList.toggle('on');});
+})();
+</script>

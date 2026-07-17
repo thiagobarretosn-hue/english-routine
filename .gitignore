@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# Testes / temporários
+.playwright-mcp/
+shot-*.png
+*.tmp
+
+# Sistema
+Thumbs.db
+.DS_Store
