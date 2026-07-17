@@ -82,6 +82,7 @@ window.LIVRO.registrar({
       { palavra:"at", ipa:"/æt/", soa:"“ét”", sentido:"às (horário)" },
       { palavra:"a.m.", ipa:"/ˌeɪ ˈɛm/", soa:"“êi ém”", sentido:"da manhã" }
     ],
+    fraseSoa:"ai uêik âp ét êit êi-ém",
     fraseIpa:"/aɪ weɪk ʌp æt eɪt eɪ ˈɛm/",
     notaPron:"Na fala rápida, o <strong>t</strong> de <span class=\"en\" data-say=\"at\">at</span> quase some — vira “a(t)_eight”.",
     cultura:"a pergunta que você vai ouvir é <span class=\"en\" data-say=\"What time do you usually wake up?\">What time do you usually wake up?</span> (“Que horas você costuma acordar?”). Responder <span class=\"en\" data-say=\"I usually wake up around 8.\">I usually wake up around 8.</span> soa muito mais natural do que só “I wake up at 8”."

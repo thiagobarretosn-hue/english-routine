@@ -128,9 +128,22 @@
       p3.push(blk('💬','Expressões relacionadas','<div class="grid2">'+cards+'</div>'));
     }
     if(L.vocabulario){var vo=L.vocabulario;
-      var rows=vo.linhas.map(function(r){return '<tr><td>'+EN(r.palavra)+'</td><td class="ipa">'+esc(r.ipa)+'</td><td>'+esc(r.soa)+'</td><td>'+esc(r.sentido)+'</td></tr>';}).join('');
-      var body='<div class="twrap"><table><thead><tr><th>Palavra</th><th>IPA</th><th>Soa como</th><th>Sentido</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
-      if(vo.fraseIpa)body+='<p class="note">Frase inteira: <span class="ipa">'+esc(vo.fraseIpa)+'</span>. '+(vo.notaPron||'')+'</p>';
+      var rows=vo.linhas.map(function(r){
+        return '<tr><td>'+EN(r.palavra)+(r.ipa?'<div class="ipa-mini">'+esc(r.ipa)+'</div>':'')+'</td>'+
+          '<td class="soacol">'+esc(r.soa)+'</td><td>'+esc(r.sentido)+'</td></tr>';
+      }).join('');
+      var body='<div class="twrap"><table><thead><tr><th>Palavra</th><th>Como se fala</th><th>Sentido</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+      var fraseSay = (L.hero&&L.hero.en)||'';
+      if(vo.fraseSoa){
+        body+='<div class="pron-frase"><span class="k">A frase inteira soa assim</span>'+
+          '<span class="soa-frase" data-say="'+esc(fraseSay)+'">'+esc(vo.fraseSoa)+'</span>'+
+          (vo.notaPron?'<p class="note" style="margin:.4rem 0 0">'+vo.notaPron+'</p>':'')+
+          (vo.fraseIpa?'<div class="ipa-mini" style="margin-top:.4rem">fonética (IPA, opcional): '+esc(vo.fraseIpa)+'</div>':'')+
+          '</div>';
+      } else if(vo.fraseIpa){
+        body+='<p class="note">Frase inteira: <span class="ipa">'+esc(vo.fraseIpa)+'</span>. '+(vo.notaPron||'')+'</p>';
+      }
+      body+='<p class="note" style="margin-top:.5rem">💡 Não precisa entender os símbolos entre barras (isso é o <em>IPA</em>, o alfabeto fonético). Use a coluna <strong>“Como se fala”</strong> e toque no 🔊 para ouvir de verdade.</p>';
       if(vo.cultura)body+='<div class="callout note"><strong>⭐ Cultura:</strong> '+vo.cultura+'</div>';
       p3.push(blk('📝','Vocabulário &amp; 🔊 Pronúncia',body));
     }

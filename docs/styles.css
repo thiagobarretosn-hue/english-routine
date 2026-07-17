@@ -141,6 +141,11 @@ thead th{background:var(--accent-soft);color:var(--accent);font-family:var(--mon
 td .en{font-size:1rem;}
 tr.hl td{background:var(--accent-soft);}
 .ipa{font-family:var(--mono);color:var(--accent);}
+.ipa-mini{font-family:var(--mono);font-size:.72rem;color:var(--muted);opacity:.75;margin-top:.15rem;line-height:1.3;}
+td.soacol{font-weight:600;color:var(--ink);}
+.pron-frase{margin:.8rem 0;padding:.75rem .9rem;border:1px solid var(--line);border-radius:11px;background:var(--bg);}
+.pron-frase .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.3rem;}
+.soa-frase{font-size:1.1rem;font-weight:600;color:var(--ink);}
 .tag{font-family:var(--mono);font-size:.72rem;padding:.05rem .4rem;border-radius:5px;background:var(--accent-soft);color:var(--accent);flex:none;}
 .tag.n{background:var(--natural-soft);color:var(--natural);}
 
