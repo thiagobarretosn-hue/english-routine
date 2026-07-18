@@ -8,7 +8,7 @@ window.LIVRO = (function(){
     4:'Lunch & Afternoon', 5:'Class, Sports & Therapy', 6:'Dinner & Night'
   };
   // Lições já escritas (arquivo licao-NN.js existe):
-  var DISPONIVEIS = { 1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true, 10:true, 11:true, 12:true, 13:true, 14:true, 15:true, 16:true, 17:true, 18:true, 19:true, 20:true, 21:true };
+  var DISPONIVEIS = { 1:true, 2:true, 3:true, 4:true, 5:true, 6:true, 7:true, 8:true, 9:true, 10:true, 11:true, 12:true, 13:true, 14:true, 15:true, 16:true, 17:true, 18:true, 19:true, 20:true, 21:true, 22:true, 23:true, 24:true };
 
   // [ nº da lição, capítulo, frase em inglês ]
   var raw = [
