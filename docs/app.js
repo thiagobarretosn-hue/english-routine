@@ -155,8 +155,12 @@
     var p4=[];
     if(L.erros&&L.erros.length){
       var rows=L.erros.map(function(e){
-        if(e.tipo==='bad')return lineRow({tag:'errado',tagType:'bad',en:e.texto,wrong:true,pt:e.nota});
-        return lineRow({tag:'certo',tagType:'good',en:e.en,say:e.en,pt:e.nota});
+        var tag,enHtml;
+        if(e.tipo==='bad'){tag='<span class="badpill">errado</span>';enHtml='<span class="wrong">'+esc(e.texto)+'</span>';}
+        else {tag='<span class="goodpill">certo</span>';enHtml=EN(e.en,e.en);}
+        // nota renderiza como HTML (aceita <strong>/<em> e frases <span class="en">…</span>)
+        var nota=e.nota?'<span class="tr">'+e.nota+'</span>':'';
+        return '<div class="line">'+tag+enHtml+nota+'</div>';
       }).join('');
       p4.push(blk('⚠️','Erros comuns de brasileiros',rows));
     }
