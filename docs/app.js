@@ -28,7 +28,9 @@
   }
 
   /* ---------- Voz / Áudio ---------- */
-  var rate=store.get('rate',0.85), voices=[], preferred=null;
+  var RATES=[0.5,0.75,1];
+  var rate=store.get('rate',0.75); if(RATES.indexOf(rate)<0)rate=0.75;
+  var voices=[], preferred=null;
   function loadVoices(){
     voices=(window.speechSynthesis&&speechSynthesis.getVoices())||[];
     preferred=voices.find(function(v){return /en[-_]US/i.test(v.lang)&&/female|samantha|aria|jenny|zira|google/i.test(v.name);})

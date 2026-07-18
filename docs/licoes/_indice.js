@@ -8,7 +8,7 @@ window.LIVRO = (function(){
     4:'Lunch & Afternoon', 5:'Class, Sports & Therapy', 6:'Dinner & Night'
   };
   // Lições já escritas (arquivo licao-NN.js existe):
-  var DISPONIVEIS = { 1:true, 2:true };
+  var DISPONIVEIS = { 1:true, 2:true, 3:true, 4:true };
 
   // [ nº da lição, capítulo, frase em inglês ]
   var raw = [
