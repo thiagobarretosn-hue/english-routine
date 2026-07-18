@@ -367,8 +367,145 @@
     });
   }
 
+  /* ---------- Modo Praticar (quiz + revisão espaçada) ---------- */
+  var practice={pool:[], sess:null};
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function loadAllAvailable(){return Promise.all(ordered().filter(function(L){return L.disponivel;}).map(function(L){return ensureLoaded(L);}));}
+  function collectPool(){
+    var pool=[], seen={};
+    ordered().forEach(function(L){
+      if(!L.carregada)return;
+      function add(en,pt){var k=norm(en); if(!en||!pt||seen[k])return; seen[k]=1; pool.push({en:en,pt:pt,licao:L.meta.licao});}
+      if(L.hero) add(L.hero.en, L.hero.pt);
+      (L.flashcards||[]).forEach(function(f){add(f.en, f.pt);});
+    });
+    return pool;
+  }
+  function srsGet(){return store.get('srs',{});}
+  function srsKey(it){return norm(it.en);}
+  function srsUpdate(it, ok){var s=srsGet(), k=srsKey(it), cur=(s[k]!=null?s[k]:0); s[k]= ok?Math.min(cur+1,5):0; store.set('srs',s);}
+  function buildSession(size){
+    var s=srsGet();
+    var scored=practice.pool.map(function(it){return {it:it, lvl:(s[srsKey(it)]!=null?s[srsKey(it)]:-1)};});
+    shuffle(scored); scored.sort(function(a,b){return a.lvl-b.lvl;});
+    return scored.slice(0, Math.min(size, scored.length)).map(function(x){return x.it;});
+  }
+  function attachSpeakers(root){
+    Array.prototype.forEach.call((root||document).querySelectorAll('[data-say]'),function(elm){
+      if(elm.classList.contains('chip'))return;
+      if(elm.nextSibling&&elm.nextSibling.classList&&elm.nextSibling.classList.contains('say'))return;
+      var txt=elm.getAttribute('data-say');
+      var b=document.createElement('button'); b.className='say'; b.type='button';
+      b.setAttribute('aria-label','Ouvir: '+txt); b.innerHTML=SPK;
+      b.onclick=function(e){e.stopPropagation();speak(txt,b);};
+      elm.insertAdjacentElement('afterend',b);
+    });
+  }
+  function firstSlug(){var f=ordered().filter(function(x){return x.disponivel;})[0]; return f?id(f):'';}
+
+  function enterPractice(){
+    if(speechSynthesis)speechSynthesis.cancel();
+    closeDrawer();
+    document.title='Praticar · English Through My Routine';
+    $('#view').innerHTML='<p style="text-align:center;margin-top:5rem" class="note">Preparando a prática…</p>';
+    loadAllAvailable().then(function(){
+      practice.pool=collectPool();
+      if((location.hash||'').replace('#','')!=='praticar')return;
+      renderPracticeHome(); buildTOC(); window.scrollTo(0,0);
+    });
+  }
+  function renderPracticeHome(){
+    var s=srsGet(), pool=practice.pool;
+    var dominados=pool.filter(function(it){return (s[srsKey(it)]||0)>=5;}).length;
+    var vistos=pool.filter(function(it){return s[srsKey(it)]!=null;}).length;
+    $('#view').innerHTML='<div class="prac-wrap">'+
+      '<div class="eyebrow" style="justify-content:flex-start">🎯 Revisão</div>'+
+      '<h2 class="prac-title">Praticar</h2>'+
+      '<p class="note">Frases sorteadas de todas as lições que você liberou. O app lembra o que você erra e traz de volta primeiro.</p>'+
+      '<div class="prac-stats">'+
+        '<div class="pstat"><div class="pnum">'+pool.length+'</div><div class="plbl">frases</div></div>'+
+        '<div class="pstat"><div class="pnum">'+vistos+'</div><div class="plbl">praticadas</div></div>'+
+        '<div class="pstat"><div class="pnum">'+dominados+'</div><div class="plbl">dominadas</div></div>'+
+      '</div>'+
+      (pool.length? '<button class="prac-start" id="pracStart">Começar — 10 frases</button>'
+                  : '<p class="note">Nenhuma frase disponível ainda.</p>')+
+      '<button class="btn" id="pracBack" style="margin-top:.9rem">← Voltar às lições</button>'+
+      '</div>';
+    if($('#pracStart'))$('#pracStart').onclick=function(){startSession(10);};
+    $('#pracBack').onclick=function(){location.hash=firstSlug();};
+  }
+  function startSession(n){ practice.sess={items:buildSession(n), idx:0, right:0}; renderQuestion(); window.scrollTo(0,0); }
+  function renderQuestion(){
+    var s=practice.sess; if(!s)return;
+    if(s.idx>=s.items.length){return renderResult();}
+    var it=s.items[s.idx], mode=(s.idx%2===0)?'choice':'type';
+    var header='<div class="prac-topbar"><button class="btn" id="pracQuit">✕ Sair</button>'+
+      '<div class="prac-prog"><div class="prac-bar" style="width:'+Math.round(s.idx/s.items.length*100)+'%"></div></div>'+
+      '<div class="prac-score">'+s.right+' ✓</div></div>';
+    var body;
+    if(mode==='choice'){
+      var opts=[it.en];
+      shuffle(practice.pool.filter(function(x){return norm(x.en)!==norm(it.en);})).slice(0,3).forEach(function(x){opts.push(x.en);});
+      opts=shuffle(opts);
+      body='<div class="prac-q">Qual é a tradução em inglês?</div><div class="prac-pt">'+esc(it.pt)+'</div>'+
+        '<div class="prac-opts">'+opts.map(function(o){return '<button class="prac-opt" data-en="'+esc(o)+'">'+esc(o)+'</button>';}).join('')+'</div>'+
+        '<div class="prac-fb" id="pracFb"></div>';
+    } else {
+      body='<div class="prac-q">Escreva em inglês:</div><div class="prac-pt">'+esc(it.pt)+'</div>'+
+        '<div class="fill" style="margin-top:1rem"><input type="text" id="pracInput" placeholder="digite em inglês…" style="flex:1;min-width:11rem" autocomplete="off" autocapitalize="off" spellcheck="false"><button class="btn" id="pracCheck">Verificar</button></div>'+
+        '<button class="btn" id="pracDont" style="margin-top:.6rem;border-style:dashed">Não sei — revelar</button>'+
+        '<div class="prac-fb" id="pracFb"></div>';
+    }
+    $('#view').innerHTML='<div class="prac-wrap">'+header+body+'</div>';
+    $('#pracQuit').onclick=function(){renderPracticeHome();};
+    if(mode==='choice'){
+      Array.prototype.forEach.call(document.querySelectorAll('.prac-opt'),function(b){
+        b.onclick=function(){answer(it, norm(b.getAttribute('data-en'))===norm(it.en), b, false);};
+      });
+    } else {
+      var inp=$('#pracInput'); if(inp)inp.focus();
+      var chk=function(){answer(it, norm(inp.value)===norm(it.en), null, false);};
+      $('#pracCheck').onclick=chk;
+      inp.onkeydown=function(e){if(e.key==='Enter')chk();};
+      $('#pracDont').onclick=function(){answer(it,false,null,true);};
+    }
+  }
+  function answer(it, ok, btn, revealed){
+    var s=practice.sess, good=ok&&!revealed;
+    srsUpdate(it, good);
+    if(good)s.right++;
+    speak(it.en);
+    Array.prototype.forEach.call(document.querySelectorAll('.prac-opt'),function(b){
+      b.disabled=true;
+      if(norm(b.getAttribute('data-en'))===norm(it.en))b.classList.add('ok');
+      else if(b===btn)b.classList.add('no');
+    });
+    var inp=$('#pracInput'); if(inp){inp.disabled=true; inp.className=good?'ok':'no';}
+    var fb=$('#pracFb');
+    fb.innerHTML='<div class="'+(good?'pfb-ok':'pfb-no')+'">'+(good?'✓ Correto!':'Resposta certa:')+'</div>'+
+      '<div class="prac-answer"><span class="en" data-say="'+esc(it.en)+'">'+esc(it.en)+'</span></div>'+
+      '<button class="prac-start" id="pracNext" style="margin-top:1rem">'+((s.idx+1>=s.items.length)?'Ver resultado':'Próxima →')+'</button>';
+    attachSpeakers(fb);
+    $('#pracNext').onclick=function(){s.idx++;renderQuestion();window.scrollTo(0,0);};
+  }
+  function renderResult(){
+    var s=practice.sess, total=s.items.length, pct=Math.round(s.right/total*100);
+    var msg = pct===100?'Perfeito! 🎉' : pct>=70?'Muito bom!' : 'Bom treino — repetir fixa.';
+    $('#view').innerHTML='<div class="prac-wrap" style="text-align:center">'+
+      '<div class="eyebrow" style="justify-content:center">Resultado</div>'+
+      '<div class="prac-big">'+s.right+'<span style="opacity:.4">/'+total+'</span></div>'+
+      '<p class="note">'+msg+' As frases que escaparam voltam primeiro na próxima rodada.</p>'+
+      '<button class="prac-start" id="pracAgain">Praticar mais 10</button>'+
+      '<button class="btn" id="pracBack2" style="margin-top:.9rem">← Voltar às lições</button>'+
+      '</div>';
+    $('#pracAgain').onclick=function(){startSession(10);};
+    $('#pracBack2').onclick=function(){location.hash=firstSlug();};
+    window.scrollTo(0,0);
+  }
+
   /* ---------- Router ---------- */
   function show(slug){
+    if(slug==='praticar'){ enterPractice(); return; }
     var L=bySlug(slug)||ordered()[0];
     if(!L){$('#view').innerHTML='<p style="text-align:center;margin-top:4rem" class="note">Nenhuma lição carregada.</p>';return;}
     if(!L.disponivel){ // caiu numa lição ainda não escrita: volta pra primeira disponível
@@ -418,6 +555,8 @@
     $('#toclist').onclick=function(e){
       var b=e.target.closest('[data-go]'); if(b){location.hash=b.getAttribute('data-go');}
     };
+    // entrada da prática
+    if($('#pracEntry'))$('#pracEntry').onclick=function(){location.hash='praticar';};
     // rotas
     window.addEventListener('hashchange',function(){show((location.hash||'').replace('#',''));});
     show((location.hash||'').replace('#',''));
