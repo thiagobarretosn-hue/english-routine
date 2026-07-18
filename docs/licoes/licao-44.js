@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"watch a movie", past:"watched a movie", irregular:false, ptPast:"eu assisti um filme", ptFut:"eu vou assistir um filme" },
     nota:'watch → he watches (-es); still fica antes do verbo.',
     linhas: [
       { p:"I", en:"I still watch a movie", say:"I still watch a movie.", pt:"eu ainda assisto um filme" },

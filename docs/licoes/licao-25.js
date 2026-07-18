@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"go back to work", past:"went back to work", irregular:true, ptPast:"eu voltei ao trabalho", ptFut:"eu vou voltar ao trabalho" },
     nota:'go → he goes (Lição 14). O <span class="en" data-say="back">back</span> vem logo depois.',
     linhas: [
       { p:"I", en:"I go back to work", say:"I go back to work at 2.", pt:"eu volto ao trabalho" },

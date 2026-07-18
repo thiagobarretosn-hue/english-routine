@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"leave the gym", past:"left the gym", irregular:true, ptPast:"eu saí da academia", ptFut:"eu vou sair da academia" },
     nota:'leave → he leaves (só o -s).',
     linhas: [
       { p:"I", en:"I leave the gym", say:"I leave the gym.", pt:"eu saio da academia" },

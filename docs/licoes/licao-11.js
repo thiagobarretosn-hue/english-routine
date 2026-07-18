@@ -35,6 +35,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"have coffee", past:"had coffee", irregular:true, ptPast:"eu tomei café", ptFut:"eu vou tomar café" },
     nota:'have → has (Lição 8). O <span class="en" data-say="usually">usually</span> fica entre a pessoa e o verbo em todas.',
     linhas: [
       { p:"I", en:"I usually have", say:"I usually have coffee.", pt:"eu normalmente tomo" },

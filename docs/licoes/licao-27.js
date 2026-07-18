@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"work until 6", past:"worked until 6", irregular:false, ptPast:"eu trabalhei até as 6", ptFut:"eu vou trabalhar até as 6" },
     nota:'work → he works (Lição 6).',
     linhas: [
       { p:"I", en:"I work until 6", say:"I work until 6.", pt:"eu trabalho até as 6" },

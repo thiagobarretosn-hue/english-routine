@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"order food", past:"ordered food", irregular:false, ptPast:"eu pedi comida", ptFut:"eu vou pedir comida" },
     nota:'make → makes; order → orders.',
     linhas: [
       { p:"I", en:"I order food", say:"I order food on an app.", pt:"eu peço comida" },

@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"have dinner", past:"had dinner", irregular:true, ptPast:"eu jantei", ptFut:"eu vou jantar" },
     nota:'have → has (Lição 8).',
     linhas: [
       { p:"I", en:"I have dinner with my mom", say:"I have dinner with my mom.", pt:"eu janto com minha mãe" },

@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"ride my motorcycle", past:"rode my motorcycle", irregular:true, ptPast:"eu fui de moto", ptFut:"eu vou de moto" },
     nota:'ride → he rides. O <span class="en" data-say="usually">usually</span> fica antes do verbo.',
     linhas: [
       { p:"I", en:"I ride my motorcycle", say:"I ride my motorcycle.", pt:"eu piloto minha moto" },

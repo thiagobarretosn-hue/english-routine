@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"have dinner", past:"had dinner", irregular:true, ptPast:"eu jantei", ptFut:"eu vou jantar" },
     nota:'have → has (Lição 8).',
     linhas: [
       { p:"I", en:"I have dinner late", say:"I have dinner really late.", pt:"eu janto tarde" },

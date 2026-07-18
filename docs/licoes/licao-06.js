@@ -35,6 +35,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"work from home", past:"worked from home", irregular:false, ptPast:"eu trabalhei de casa", ptFut:"eu vou trabalhar de casa" },
     nota:'Só <strong>he / she / it</strong> ganham <strong>-s</strong>.',
     linhas: [
       { p:"I", en:"I work from home", say:"I work from home.", pt:"eu trabalho de casa" },

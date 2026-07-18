@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"train chest", past:"trained chest", irregular:false, ptPast:"eu treinei peito", ptFut:"eu vou treinar peito" },
     nota:'train → he trains (só o -s de sempre).',
     linhas: [
       { p:"I", en:"I train chest", say:"I train chest on Mondays.", pt:"eu treino peito" },

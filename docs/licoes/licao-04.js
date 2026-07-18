@@ -35,6 +35,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"turn on my computer", past:"turned on my computer", irregular:false, ptPast:"eu liguei o computador", ptFut:"eu vou ligar o computador" },
     nota:'A 3ª pessoa leva <strong>-s</strong> no verbo principal (turn → turn<strong>s</strong>), e o <span class="en" data-say="on">on</span> continua logo depois.',
     linhas: [
       { p:"I", en:"I turn on my computer", say:"I turn on my computer.", pt:"eu ligo meu computador" },

@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"fry eggs", past:"fried eggs", irregular:false, ptPast:"eu fritei ovos", ptFut:"eu vou fritar ovos" },
     nota:'⚠️ Regra nova: verbo terminado em <strong>consoante + y</strong> troca o y por <strong>-ies</strong> na 3ª pessoa. fry → he <strong>fries</strong>.',
     linhas: [
       { p:"I", en:"I fry eggs", say:"I fry eggs.", pt:"eu frito ovos" },

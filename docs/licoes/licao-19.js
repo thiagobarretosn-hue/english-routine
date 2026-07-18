@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"do cardio", past:"did cardio", irregular:true, ptPast:"eu fiz cardio", ptFut:"eu vou fazer cardio" },
     nota:'⚠️ <span class="en" data-say="do">do</span> é irregular: he <span class="en" data-say="does">does</span> (o mesmo “does” que você já usa nas perguntas!).',
     linhas: [
       { p:"I", en:"I do cardio", say:"I do cardio.", pt:"eu faço cardio" },

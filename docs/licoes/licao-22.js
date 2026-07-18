@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"get home", past:"got home", irregular:true, ptPast:"eu cheguei em casa", ptFut:"eu vou chegar em casa" },
     nota:'get → he gets; take off → he takes off.',
     linhas: [
       { p:"I", en:"I get home", say:"When I get home, I relax.", pt:"eu chego em casa" },

@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"have a class", past:"had a class", irregular:true, ptPast:"eu tive aula", ptFut:"eu vou ter aula" },
     nota:'have → has (Lição 8).',
     linhas: [
       { p:"I", en:"I have a class", say:"I have an English class.", pt:"eu tenho aula" },

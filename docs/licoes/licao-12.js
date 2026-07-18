@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"take a shower", past:"took a shower", irregular:true, ptPast:"eu tomei banho", ptFut:"eu vou tomar banho" },
     nota:'take → he takes. O <span class="en" data-say="a">a</span> (um) continua antes de shower.',
     linhas: [
       { p:"I", en:"I take a shower", say:"I take a shower.", pt:"eu tomo banho" },

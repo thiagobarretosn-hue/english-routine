@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"brush my teeth", past:"brushed my teeth", irregular:false, ptPast:"eu escovei os dentes", ptFut:"eu vou escovar os dentes" },
     nota:'brush → brushes (-es); take → takes (-s).',
     linhas: [
       { p:"I", en:"I brush and take a shower", say:"I brush my teeth and take a shower.", pt:"eu escovo e tomo banho" },

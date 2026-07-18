@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"make breakfast", past:"made breakfast", irregular:true, ptPast:"eu preparei o café da manhã", ptFut:"eu vou preparar o café da manhã" },
     nota:'Padrão de sempre — só <strong>he / she / it</strong> ganham <strong>-s</strong> (make → makes).',
     linhas: [
       { p:"I", en:"I make breakfast", say:"I make breakfast.", pt:"eu preparo o café da manhã" },

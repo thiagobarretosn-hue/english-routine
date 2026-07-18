@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"start working", past:"started working", irregular:false, ptPast:"eu comecei a trabalhar", ptFut:"eu vou começar a trabalhar" },
     nota:'Só <strong>he / she / it</strong> ganham <strong>-s</strong> — no verbo <em>start</em>, não no <em>working</em>.',
     linhas: [
       { p:"I", en:"I start working", say:"I start working at 8.", pt:"eu começo a trabalhar" },

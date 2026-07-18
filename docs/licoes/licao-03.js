@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"make my bed", past:"made my bed", irregular:true, ptPast:"eu arrumei a cama", ptFut:"eu vou arrumar a cama" },
     nota:'Padrão de sempre: só <strong>he / she / it</strong> ganham <strong>-s</strong>. E o possessivo acompanha (my → his → her).',
     linhas: [
       { p:"I", en:"I make my bed", say:"I make my bed.", pt:"eu arrumo minha cama" },

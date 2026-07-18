@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"play volleyball", past:"played volleyball", irregular:false, ptPast:"eu joguei vôlei", ptFut:"eu vou jogar vôlei" },
     nota:'⚠️ <span class="en" data-say="play">play</span> termina em <strong>vogal + y</strong>, então ganha só <strong>-s</strong> (plays), diferente de fry → fries (consoante + y).',
     linhas: [
       { p:"I", en:"I play volleyball", say:"I play volleyball on Mondays.", pt:"eu jogo vôlei" },

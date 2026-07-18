@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"have rice and beans", past:"had rice and beans", irregular:true, ptPast:"eu comi arroz e feijão", ptFut:"eu vou comer arroz e feijão" },
     nota:'have → has (Lição 8). usually antes do verbo.',
     linhas: [
       { p:"I", en:"I usually have rice", say:"I usually have rice and beans.", pt:"eu normalmente como arroz" },

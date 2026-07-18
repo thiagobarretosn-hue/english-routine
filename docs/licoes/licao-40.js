@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"watch series", past:"watched series", irregular:false, ptPast:"eu assisti séries", ptFut:"eu vou assistir séries" },
     nota:'like → he likes.',
     linhas: [
       { p:"I", en:"I like watching series", say:"I like watching series.", pt:"eu gosto de assistir séries" },

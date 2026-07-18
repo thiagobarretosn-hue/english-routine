@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"play on my computer", past:"played on my computer", irregular:false, ptPast:"eu joguei no computador", ptFut:"eu vou jogar no computador" },
     nota:'play → he plays (vogal + y = só -s).',
     linhas: [
       { p:"I", en:"I play on my computer", say:"I play on my computer.", pt:"eu jogo no computador" },

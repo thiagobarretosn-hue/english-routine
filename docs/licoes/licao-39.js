@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"watch soccer games", past:"watched soccer games", irregular:false, ptPast:"eu assisti aos jogos", ptFut:"eu vou assistir aos jogos" },
     nota:'⚠️ <span class="en" data-say="watch">watch</span> termina em <strong>-ch</strong>, então leva <strong>-es</strong> na 3ª pessoa: he <span class="en" data-say="watches">watches</span> (igual a brush → brushes).',
     linhas: [
       { p:"I", en:"I watch games", say:"I watch soccer games.", pt:"eu assisto jogos" },

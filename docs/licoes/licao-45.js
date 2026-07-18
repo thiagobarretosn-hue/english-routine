@@ -32,6 +32,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"get ready for bed", past:"got ready for bed", irregular:true, ptPast:"eu me preparei para dormir", ptFut:"eu vou me preparar para dormir" },
     nota:'get → he gets.',
     linhas: [
       { p:"I", en:"I get ready for bed", say:"I get ready for bed.", pt:"eu me preparo para dormir" },

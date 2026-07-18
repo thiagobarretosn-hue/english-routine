@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"go to sleep", past:"went to sleep", irregular:true, ptPast:"eu fui dormir", ptFut:"eu vou dormir" },
     nota:'go → he goes (Lição 14). usually antes do verbo.',
     linhas: [
       { p:"I", en:"I go to sleep late", say:"I usually go to sleep late.", pt:"eu durmo tarde" },

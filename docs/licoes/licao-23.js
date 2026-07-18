@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"have lunch", past:"had lunch", irregular:true, ptPast:"eu almocei", ptFut:"eu vou almoçar" },
     nota:'have → has (Lição 8); get back → gets back.',
     linhas: [
       { p:"I", en:"I have lunch", say:"I have lunch after the gym.", pt:"eu almoço" },

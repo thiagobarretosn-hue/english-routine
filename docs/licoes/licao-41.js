@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"play guitar", past:"played guitar", irregular:false, ptPast:"eu toquei violão", ptFut:"eu vou tocar violão" },
     nota:'like → likes; play → plays; watch → watches.',
     linhas: [
       { p:"I", en:"I play guitar", say:"I like playing guitar.", pt:"eu toco violão" },

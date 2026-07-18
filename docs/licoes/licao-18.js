@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"train legs", past:"trained legs", irregular:false, ptPast:"eu treinei perna", ptFut:"eu vou treinar perna" },
     nota:'train → he trains (o de sempre).',
     linhas: [
       { p:"I", en:"I train legs", say:"I train legs on Wednesdays.", pt:"eu treino perna" },

@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"cook something new", past:"cooked something new", irregular:false, ptPast:"eu cozinhei algo novo", ptFut:"eu vou cozinhar algo novo" },
     nota:'cook → he cooks.',
     linhas: [
       { p:"I", en:"I cook something new", say:"I cook something different.", pt:"eu cozinho algo novo" },

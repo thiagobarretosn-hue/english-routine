@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"have breakfast", past:"had breakfast", irregular:true, ptPast:"eu tomei café da manhã", ptFut:"eu vou tomar café da manhã" },
     nota:'⚠️ <span class="en" data-say="have">have</span> é <strong>irregular</strong> na 3ª pessoa: vira <span class="en" data-say="has">has</span>, não “haves”.',
     linhas: [
       { p:"I", en:"I have breakfast", say:"I have breakfast.", pt:"eu tomo café da manhã" },

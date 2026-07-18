@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"go back home", past:"went back home", irregular:true, ptPast:"eu voltei para casa", ptFut:"eu vou voltar para casa" },
     nota:'go → he goes (Lição 14). O <span class="en" data-say="back">back</span> vem logo depois.',
     linhas: [
       { p:"I", en:"I go back home", say:"I go back home.", pt:"eu volto para casa" },

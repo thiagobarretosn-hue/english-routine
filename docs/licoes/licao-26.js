@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"have meetings", past:"had meetings", irregular:true, ptPast:"eu tive reuniões", ptFut:"eu vou ter reuniões" },
     nota:'have → has (Lição 8).',
     linhas: [
       { p:"I", en:"I have meetings", say:"I have meetings with my team.", pt:"eu tenho reuniões" },

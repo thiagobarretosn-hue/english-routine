@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"train back", past:"trained back", irregular:false, ptPast:"eu treinei costas", ptFut:"eu vou treinar costas" },
     nota:'train → he trains (revisão da Lição 16).',
     linhas: [
       { p:"I", en:"I train back", say:"I train back on Tuesdays.", pt:"eu treino costas" },

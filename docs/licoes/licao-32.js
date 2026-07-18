@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"play volleyball", past:"played volleyball", irregular:false, ptPast:"eu joguei vôlei", ptFut:"eu vou jogar vôlei" },
     nota:'play → he plays (Lição 30).',
     linhas: [
       { p:"I", en:"I play from 7 to 10", say:"I play volleyball from 7 to 10.", pt:"eu jogo das 7 às 10" },

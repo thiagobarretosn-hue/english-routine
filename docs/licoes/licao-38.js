@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"talk to my mom", past:"talked to my mom", irregular:false, ptPast:"eu conversei com minha mãe", ptFut:"eu vou conversar com minha mãe" },
     nota:'talk → he talks.',
     linhas: [
       { p:"I", en:"I talk to my mom", say:"I talk to my mom.", pt:"eu converso com minha mãe" },

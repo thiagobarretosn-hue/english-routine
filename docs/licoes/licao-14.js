@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"go to the gym", past:"went to the gym", irregular:true, ptPast:"eu fui para a academia", ptFut:"eu vou à academia" },
     nota:'⚠️ <span class="en" data-say="go">go</span> ganha <strong>-es</strong> na 3ª pessoa: he <span class="en" data-say="goes">goes</span>.',
     linhas: [
       { p:"I", en:"I go to the gym", say:"I go to the gym.", pt:"eu vou para a academia" },

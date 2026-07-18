@@ -33,6 +33,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"play beach volleyball", past:"played beach volleyball", irregular:false, ptPast:"eu joguei vôlei de areia", ptFut:"eu vou jogar vôlei de areia" },
     nota:'play → he plays (Lição 30).',
     linhas: [
       { p:"I", en:"I play beach volleyball", say:"I play beach volleyball at 8.", pt:"eu jogo vôlei de areia" },

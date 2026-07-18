@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"go to therapy", past:"went to therapy", irregular:true, ptPast:"eu fui à terapia", ptFut:"eu vou à terapia" },
     nota:'go → he goes (Lição 14).',
     linhas: [
       { p:"I", en:"I go to therapy", say:"I go to therapy.", pt:"eu faço terapia" },

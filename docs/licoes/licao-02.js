@@ -35,6 +35,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"brush my teeth", past:"brushed my teeth", irregular:false, ptPast:"eu escovei os dentes", ptFut:"eu vou escovar os dentes" },
     nota:'Duas coisas mudam junto com a pessoa: o <strong>-es</strong> na 3ª pessoa (verbo terminado em <strong>-sh</strong> leva <strong>-es</strong>, não só -s) e o <strong>possessivo</strong> (my → your → his → her...).',
     linhas: [
       { p:"I", en:"I brush my teeth", say:"I brush my teeth.", pt:"eu escovo meus dentes" },

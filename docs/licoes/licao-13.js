@@ -34,6 +34,7 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
+    verbo: { base:"stop working", past:"stopped working", irregular:false, ptPast:"eu parei de trabalhar", ptFut:"eu vou parar de trabalhar" },
     nota:'stop → he stops (só o -s de sempre; o -ing fica no working).',
     linhas: [
       { p:"I", en:"I stop working", say:"I stop working at 12.", pt:"eu paro de trabalhar" },
