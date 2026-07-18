@@ -106,10 +106,37 @@
     // PART II — A Mecânica
     var p2=[];
     if(L.conjugacao){var cj=L.conjugacao;
-      var rows=cj.linhas.map(function(r){return '<tr'+(r.hl?' class="hl"':'')+'><td>'+esc(r.p)+'</td><td>'+EN(r.en,r.say)+'</td><td>'+esc(r.pt)+'</td></tr>';}).join('');
-      p2.push(blk('👥','Conjugação — só uma coisa muda',
-        (cj.nota?'<p>'+cj.nota+'</p>':'')+
-        '<div class="twrap"><table><thead><tr><th>Pessoa</th><th>Frase</th><th>Tradução</th></tr></thead><tbody>'+rows+'</tbody></table></div>'));
+      if(cj.verbo){
+        var v=cj.verbo, PRON=['I','you','we','they','he','she','it'];
+        // PRESENTE — usa as linhas (com tradução)
+        var presRows=cj.linhas.map(function(r){return '<tr'+(r.hl?' class="hl"':'')+'><td>'+esc(r.p)+'</td><td>'+EN(r.en,r.say)+'</td><td>'+esc(r.pt)+'</td></tr>';}).join('');
+        var presTab='<div class="twrap"><table><thead><tr><th>Pessoa</th><th>Frase</th><th>Tradução</th></tr></thead><tbody>'+presRows+'</tbody></table></div>';
+        var presNote='<p class="note">'+(cj.nota||'Só <strong>he / she / it</strong> ganham <strong>-s</strong>. O resto é igual.')+'</p>';
+        // PASSADO — mesma forma para todas as pessoas
+        var pastRows=PRON.map(function(p){var f=p+' '+v.past;return '<tr'+(p==='I'?' class="hl"':'')+'><td>'+p+'</td><td>'+EN(f,f)+'</td></tr>';}).join('');
+        var pastTab='<div class="twrap"><table><thead><tr><th>Pessoa</th><th>Frase</th></tr></thead><tbody>'+pastRows+'</tbody></table></div>';
+        var pastNote='<div class="callout"><strong>A boa notícia:</strong> no passado o verbo é <strong>igual para todas as pessoas</strong> — não tem o -s nem muda com he/she/it. Você decora uma forma só: <strong>'+esc(v.base)+' → '+esc(v.past)+'</strong>'+(v.irregular?' <span class="tag">irregular</span>':' <span class="tag n">regular · +ed</span>')+'.'+(v.ptPast?' <br><span class="note">I '+esc(v.past)+' = '+esc(v.ptPast)+'.</span>':'')+'</div>';
+        // FUTURO — will + base, igual para todas
+        var futRows=PRON.map(function(p){var f=p+' will '+v.base;return '<tr'+(p==='I'?' class="hl"':'')+'><td>'+p+'</td><td>'+EN(f,f)+'</td></tr>';}).join('');
+        var futTab='<div class="twrap"><table><thead><tr><th>Pessoa</th><th>Frase</th></tr></thead><tbody>'+futRows+'</tbody></table></div>';
+        var futNote='<div class="callout"><strong>Mais fácil ainda:</strong> no futuro é só <strong>will + '+esc(v.base)+'</strong> — igual para todas as pessoas.'+(v.ptFut?' <br><span class="note">I will '+esc(v.base)+' = '+esc(v.ptFut)+'.</span>':'')+'</div>';
+        var tabs='<div class="conjtabs">'+
+          '<div class="conjtab-btns">'+
+            '<button class="conjtab-btn on" data-tab="pres">Presente</button>'+
+            '<button class="conjtab-btn" data-tab="past">Passado</button>'+
+            '<button class="conjtab-btn" data-tab="fut">Futuro</button>'+
+          '</div>'+
+          '<div class="conjtab-panel" data-panel="pres">'+presNote+presTab+'</div>'+
+          '<div class="conjtab-panel hidden" data-panel="past">'+pastNote+pastTab+'</div>'+
+          '<div class="conjtab-panel hidden" data-panel="fut">'+futNote+futTab+'</div>'+
+        '</div>';
+        p2.push(blk('👥','Conjugação — presente, passado e futuro',tabs));
+      } else {
+        var rows=cj.linhas.map(function(r){return '<tr'+(r.hl?' class="hl"':'')+'><td>'+esc(r.p)+'</td><td>'+EN(r.en,r.say)+'</td><td>'+esc(r.pt)+'</td></tr>';}).join('');
+        p2.push(blk('👥','Conjugação — só uma coisa muda',
+          (cj.nota?'<p>'+cj.nota+'</p>':'')+
+          '<div class="twrap"><table><thead><tr><th>Pessoa</th><th>Frase</th><th>Tradução</th></tr></thead><tbody>'+rows+'</tbody></table></div>'));
+      }
     }
     if(L.formas){var fo=L.formas;
       var rows=fo.linhas.map(lineRow).join('');
@@ -131,7 +158,7 @@
     }
     if(L.vocabulario){var vo=L.vocabulario;
       var rows=vo.linhas.map(function(r){
-        return '<tr><td>'+EN(r.palavra)+(r.ipa?'<div class="ipa-mini">'+esc(r.ipa)+'</div>':'')+'</td>'+
+        return '<tr><td>'+EN(r.palavra)+'</td>'+
           '<td class="soacol">'+esc(r.soa)+'</td><td>'+esc(r.sentido)+'</td></tr>';
       }).join('');
       var body='<div class="twrap"><table><thead><tr><th>Palavra</th><th>Como se fala</th><th>Sentido</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
@@ -140,12 +167,9 @@
         body+='<div class="pron-frase"><span class="k">A frase inteira soa assim</span>'+
           '<span class="soa-frase" data-say="'+esc(fraseSay)+'">'+esc(vo.fraseSoa)+'</span>'+
           (vo.notaPron?'<p class="note" style="margin:.4rem 0 0">'+vo.notaPron+'</p>':'')+
-          (vo.fraseIpa?'<div class="ipa-mini" style="margin-top:.4rem">fonética (IPA, opcional): '+esc(vo.fraseIpa)+'</div>':'')+
           '</div>';
-      } else if(vo.fraseIpa){
-        body+='<p class="note">Frase inteira: <span class="ipa">'+esc(vo.fraseIpa)+'</span>. '+(vo.notaPron||'')+'</p>';
       }
-      body+='<p class="note" style="margin-top:.5rem">💡 Não precisa entender os símbolos entre barras (isso é o <em>IPA</em>, o alfabeto fonético). Use a coluna <strong>“Como se fala”</strong> e toque no 🔊 para ouvir de verdade.</p>';
+      body+='<p class="note" style="margin-top:.5rem">💡 A coluna <strong>“Como se fala”</strong> é uma aproximação em português. Para ouvir a pronúncia de verdade, toque no 🔊.</p>';
       if(vo.cultura)body+='<div class="callout note"><strong>⭐ Cultura:</strong> '+vo.cultura+'</div>';
       p3.push(blk('📝','Vocabulário &amp; 🔊 Pronúncia',body));
     }
@@ -311,6 +335,14 @@
     });
     // hero play
     var hb=$('.play-big'); if(hb)hb.onclick=function(){speak(hb.getAttribute('data-hero'),hb);};
+    // abas de conjugação (presente/passado/futuro)
+    Array.prototype.forEach.call(document.querySelectorAll('.conjtab-btn'),function(b){
+      b.onclick=function(){
+        var tab=b.getAttribute('data-tab'), wrap=b.closest('.conjtabs');
+        Array.prototype.forEach.call(wrap.querySelectorAll('.conjtab-btn'),function(x){x.classList.toggle('on',x===b);});
+        Array.prototype.forEach.call(wrap.querySelectorAll('.conjtab-panel'),function(p){p.classList.toggle('hidden',p.getAttribute('data-panel')!==tab);});
+      };
+    });
     // exercícios completar
     Array.prototype.forEach.call(document.querySelectorAll('.ex[data-check]'),function(ex){
       var want=norm(ex.getAttribute('data-check'));

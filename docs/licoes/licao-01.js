@@ -34,7 +34,8 @@ window.LIVRO.registrar({
   },
 
   conjugacao: {
-    nota:"No Simple Present, apenas <strong>he / she / it</strong> ganham <strong>-s</strong> no verbo. O resto é igual.",
+    verbo: { base:"wake up", past:"woke up", irregular:true, ptPast:"eu acordei", ptFut:"eu vou acordar" },
+    nota:"No presente, apenas <strong>he / she / it</strong> ganham <strong>-s</strong> no verbo. O resto é igual.",
     linhas: [
       { p:"I", en:"I wake up", say:"I wake up at 8.", pt:"eu acordo" },
       { p:"you", en:"you wake up", say:"You wake up at 8.", pt:"você acorda" },
