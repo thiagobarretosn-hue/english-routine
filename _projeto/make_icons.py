@@ -3,7 +3,7 @@
 from PIL import Image, ImageDraw
 import os, math
 
-OUT = os.path.join(os.path.dirname(__file__), "docs", "icons")
+OUT = os.path.join(os.path.dirname(__file__), "..", "docs", "icons")
 os.makedirs(OUT, exist_ok=True)
 
 def lerp(a, b, t):

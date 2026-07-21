@@ -25,15 +25,13 @@ Cada lição segue a mesma estrutura: a frase → como ela se monta → o molde 
 
 ## Criar uma lição nova
 
-O app **se atualiza sozinho**: você não mexe em código, índice nem menu.
+O app **se atualiza sozinho**: ninguém mexe em código, índice nem menu.
 
-1. Abra o **[manual com o prompt pronto](PROMPT-NOVA-LICAO.md)** e copie o prompt.
-2. Cole em qualquer IA, diga a frase que quer estudar e o número da lição.
-3. Salve o resultado em `docs/licoes/licao-NN.js` e faça o commit.
+### 🎓 [**Como criar sua própria aula**](COMO-CRIAR-SUA-AULA.md) — guia passo a passo, sem programar
 
-Ao abrir o app, ele encontra a lição sozinho e a coloca no menu — criando capítulo novo se precisar.
+Resumo: copie o prompt do **[manual](PROMPT-NOVA-LICAO.md)** → cole numa IA com a frase que quer estudar → crie o arquivo `docs/licoes/licao-NN.js` pelo site do GitHub → pronto, a lição aparece no menu.
 
-> 💡 **Dica testada:** subir o arquivo direto pelo **site do GitHub** (*Add file → Upload files*) preserva os acentos. Baixar o arquivo da IA e salvar no PC costuma quebrar o encoding.
+> 💡 **Dica testada:** criar/subir o arquivo direto pelo **site do GitHub** (*Add file → Create new file*) preserva os acentos. Baixar o arquivo da IA e salvar no PC costuma quebrar o encoding.
 
 ## Remover uma lição
 
@@ -53,17 +51,19 @@ Acusa acentos quebrados, nome de arquivo errado, campo obrigatório faltando, al
 ## Estrutura
 
 ```
-docs/                 ← o app (publicado pelo GitHub Pages)
-  index.html            casca
-  app.js                motor: renderiza a lição, áudio, exercícios, prática
-  styles.css            visual (tema claro/escuro)
-  service-worker.js     offline
+docs/                    ← o app (publicado pelo GitHub Pages)
+  index.html               casca
+  app.js                   motor: renderiza a lição, áudio, exercícios, prática
+  styles.css               visual (tema claro/escuro)
+  service-worker.js        offline
   licoes/
-    _indice.js          sumário do livro
-    licao-01.js …       uma lição = um arquivo de dados
-PROMPT-NOVA-LICAO.md  ← manual + prompt para gerar lições
-validar-licao.py      ← verificador antes do commit
-src/ · livro/         ← plano editorial e material de apoio
+    _indice.js             sumário do livro
+    licao-01.js …          uma lição = um arquivo de dados   ← é aqui que se cria aula
+
+COMO-CRIAR-SUA-AULA.md   ← guia passo a passo (para quem vai estudar)
+PROMPT-NOVA-LICAO.md     ← manual + prompt para gerar as lições
+validar-licao.py         ← verificador opcional, antes do commit
+_projeto/                ← bastidores: plano editorial, rotina original, scripts
 ```
 
 Sem back-end, sem framework, sem build: HTML, CSS e JavaScript puro servidos pelo GitHub Pages.
