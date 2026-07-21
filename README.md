@@ -11,7 +11,7 @@ Funciona no celular e no computador. Dá para **instalar** (vira ícone na tela)
 
 ## O que tem dentro
 
-- **47 lições** — a rotina inteira, do acordar ao dormir, em 7 capítulos.
+- **46 lições** — a rotina inteira, do acordar ao dormir, em 6 capítulos.
 - **🔊 Áudio em tudo** — toque em qualquer frase para ouvir, com controle de velocidade (0.5× / 0.75× / 1×).
 - **Conjugação em abas** — Presente, Passado e Futuro lado a lado, mostrando o verbo mudar.
 - **Pronúncia em português** — “uêik âp”, sem alfabeto fonético.

@@ -8,7 +8,7 @@ O app **se atualiza sozinho**. Você não mexe em código, nem no índice, nem n
 
 Ao abrir o app, ele encontra a lição sozinho e a coloca no menu — criando capítulo novo se precisar.
 
-> Hoje o livro vai até a **47**. A próxima é `licao-48.js`.
+> Hoje o livro vai até a **46**. A próxima é `licao-47.js`.
 
 ---
 ═══════════════ COPIE DAQUI ═══════════════
