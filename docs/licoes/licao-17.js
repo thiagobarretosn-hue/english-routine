@@ -84,7 +84,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"on TÚUZ-deis ai trêin bék end BÁI-seps",
     fraseIpa:"/ɒn ˈtuːzdeɪz aɪ treɪn bæk ænd ˈbaɪsɛps/",
-    notaPron:'<span class="en" data-say="back">back</span> tem o som /æ/ (aquele “é” bem aberto): “bék”. E <span class="en" data-say="Tuesday">Tuesday</span> começa com “tiú/tú”, não “tchusdei”.',
+    notaPron:'<span class="en" data-say="back">back</span> tem aquele “é” bem aberto: “bék”. E <span class="en" data-say="Tuesday">Tuesday</span> começa com “tiú/tú”, não “tchusdei”.',
     cultura:'Os dias da semana em inglês são sempre <strong>maiúsculos</strong>: Monday, Tuesday, Wednesday… diferente do português. Isso vale também para os meses.'
   },
 

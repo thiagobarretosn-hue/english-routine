@@ -85,7 +85,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"ai rév lântch áfter ai guét bék frâm dâ djim",
     fraseIpa:"/aɪ hæv lʌntʃ ˈæftər aɪ ɡɛt bæk frʌm ðə dʒɪm/",
-    notaPron:'<span class="en" data-say="lunch">lunch</span> termina com o som “tch” (/tʃ/): “lântch”. O “u” é o mesmo /ʌ/ de “up” (“â”).',
+    notaPron:'<span class="en" data-say="lunch">lunch</span> termina com o som “tch”: “lântch”. O “u” é o mesmo “â” de “up” (“â”).',
     cultura:'A pergunta <span class="en" data-say="Did you have lunch?">“Did you have lunch?”</span> (você almoçou?) é super comum. E <span class="en" data-say="lunch break">lunch break</span> = intervalo/horário de almoço.'
   },
 

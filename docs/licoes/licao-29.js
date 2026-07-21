@@ -85,14 +85,14 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"ai gôu tu THÉ-ra-pi ét ilévn êi-ém",
     fraseIpa:"/aɪ ɡoʊ tu ˈθɛrəpi æt ɪˈlɛvən ˌeɪ ˈɛm/",
-    notaPron:'<span class="en" data-say="therapy">therapy</span> começa com o som <strong>/θ/</strong> (língua entre os dentes, como em “teeth” e “Thursday”): “THÉ-ra-pi”, não “TÉ-ra-pi”.',
+    notaPron:'<span class="en" data-say="therapy">therapy</span> começa com o som <strong>th</strong> (língua entre os dentes, como em “teeth” e “Thursday”): “THÉ-ra-pi”, não “TÉ-ra-pi”.',
     cultura:'Nos EUA, <span class="en" data-say="I have therapy today.">“I have therapy today.”</span> é dito com naturalidade, como quem fala de uma consulta médica. Cuidar da saúde mental é visto como algo positivo.'
   },
 
   erros: [
     { tipo:"bad", texto:"I go to the therapy.", nota:"Atividade sem the: <strong>go to therapy</strong>." },
     { tipo:"good", en:"I go to therapy.", nota:"—" },
-    { tipo:"bad", texto:"therapy com “t” no começo.", nota:"É o som /θ/ (th): <strong>THÉ-ra-pi</strong>." },
+    { tipo:"bad", texto:"therapy com “t” no começo.", nota:"É o som do <strong>th</strong>: <strong>THÉ-ra-pi</strong>." },
     { tipo:"bad", texto:"I make therapy.", nota:"Use <strong>go to</strong> ou <strong>have</strong> therapy, não “make”." }
   ],
 
@@ -127,13 +127,13 @@ window.LIVRO.registrar({
     { pt:"Vejo minha terapeuta às 11.", en:"I see my therapist at 11." }
   ],
 
-  conexao:'Reforça o <span class="en" data-say="go to">go to</span> da Lição 14, agora com a versão <strong>sem the</strong> (atividades). E treina de novo o som /θ/ (th) que apareceu em teeth, Thursday e agora therapy.',
+  conexao:'Reforça o <span class="en" data-say="go to">go to</span> da Lição 14, agora com a versão <strong>sem the</strong> (atividades). E treina de novo o som do <strong>th</strong> que apareceu em teeth, Thursday e agora therapy.',
 
   revisao: [
     "<strong>go to therapy</strong> (sem the) — atividade, não prédio.",
     "Sem the: therapy, work, school, church, bed.",
     "Com the: the gym, the office, the bank.",
-    "<strong>therapy</strong> = som /θ/ (“THÉ-ra-pi”).",
+    "<strong>therapy</strong> = som do <strong>th</strong> (“THÉ-ra-pi”).",
     "Também: <strong>have therapy</strong> / <strong>see my therapist</strong>."
   ]
 });

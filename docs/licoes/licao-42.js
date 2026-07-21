@@ -84,7 +84,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"áfter DÍ-ner, ai brâsh mai títh end têik â CHÁ-uer",
     fraseIpa:"/ˈæftər ˈdɪnər aɪ brʌʃ maɪ tiːθ ænd teɪk ə ˈʃaʊər/",
-    notaPron:'Puro reforço: <span class="en" data-say="teeth">teeth</span> (“títh”, com o som /θ/), <span class="en" data-say="brush">brush</span> (“brâsh”) e <span class="en" data-say="shower">shower</span> (“CHÁ-uer”). Você já treinou todos.',
+    notaPron:'Puro reforço: <span class="en" data-say="teeth">teeth</span> (“títh”, com o som do th), <span class="en" data-say="brush">brush</span> (“brâsh”) e <span class="en" data-say="shower">shower</span> (“CHÁ-uer”). Você já treinou todos.',
     cultura:'<span class="en" data-say="before">before</span> e <span class="en" data-say="after">after</span> são o par perfeito para descrever rotina: before bed / after dinner. Guardar os dois destrava metade das frases de sequência.'
   },
 

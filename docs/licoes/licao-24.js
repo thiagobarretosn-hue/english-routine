@@ -85,7 +85,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"ai IÚ-ju-a-li rév ráis, bíinz, end TCHÍ-kin",
     fraseIpa:"/aɪ ˈjuːʒuəli hæv raɪs biːnz ænd ˈtʃɪkɪn/",
-    notaPron:'<span class="en" data-say="chicken">chicken</span> tem o “tch” (/tʃ/) e um “i” curto: “TCHÍ-kin”. Cuidado para não falar “tchí-KÊN”.',
+    notaPron:'<span class="en" data-say="chicken">chicken</span> tem o “tch” e um “i” curto: “TCHÍ-kin”. Cuidado para não falar “tchí-KÊN”.',
     cultura:'Diferença importante: <span class="en" data-say="chicken">chicken</span> (sem artigo) = frango, a carne; <span class="en" data-say="a chicken">a chicken</span> (com “a”) = uma galinha viva. Você <em>eats chicken</em>, não “a chicken”.'
   },
 

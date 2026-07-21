@@ -85,7 +85,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"ai rév DÍ-ner uith mai mãm end mai SÍS-ter",
     fraseIpa:"/aɪ hæv ˈdɪnər wɪð maɪ mɒm ænd maɪ ˈsɪstər/",
-    notaPron:'<span class="en" data-say="family">family</span> tem 3 sílabas: “FÉ-mi-li”, com o /æ/ (é aberto) no começo. Não é “fa-MÍ-lia”.',
+    notaPron:'<span class="en" data-say="family">family</span> tem 3 sílabas: “FÉ-mi-li”, com o “é” aberto no começo. Não é “fa-MÍ-lia”.',
     cultura:'<span class="en" data-say="mom">mom</span> (EUA) e <span class="en" data-say="mum">mum</span> (Reino Unido) = mãe, no dia a dia. <span class="en" data-say="mother">mother</span> é mais formal. O mesmo vale para <span class="en" data-say="dad">dad</span> / <span class="en" data-say="father">father</span>.'
   },
 

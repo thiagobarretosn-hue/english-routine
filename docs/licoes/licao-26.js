@@ -85,7 +85,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"ai rév on-LÁIN MÍi-tings uith mai KÔU-uâr-kers",
     fraseIpa:"/aɪ hæv ˌɒnˈlaɪn ˈmiːtɪŋz wɪð maɪ ˈkoʊwɜːrkərz/",
-    notaPron:'<span class="en" data-say="meeting">meeting</span> tem o “i” longo (“MÍi-ting”), diferente de “mitting”. E <span class="en" data-say="with">with</span> termina com o som /ð/ (th sonoro), parecido com um “d” suave.',
+    notaPron:'<span class="en" data-say="meeting">meeting</span> tem o “i” longo (“MÍi-ting”), diferente de “mitting”. E <span class="en" data-say="with">with</span> termina com o <strong>th</strong> sonoro, parecido com um “d” suave.',
     cultura:'<span class="en" data-say="coworker">coworker</span> é a palavra do inglês americano; <span class="en" data-say="colleague">colleague</span> (“KÓ-lig”) é mais formal/britânica. As duas significam colega de trabalho.'
   },
 

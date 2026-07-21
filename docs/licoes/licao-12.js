@@ -85,7 +85,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"ai têik â CHÁ-uer end brâsh mai títh áfter BRÉK-fâst",
     fraseIpa:"/aɪ teɪk ə ˈʃaʊər ænd brʌʃ maɪ tiːθ ˈæftər ˈbrɛkfəst/",
-    notaPron:'<span class="en" data-say="shower">shower</span> começa com o som “ch” (/ʃ/) e tem o ditongo “áu”: “CHÁ-uer”. Não é “xóuer” nem “chóver”.',
+    notaPron:'<span class="en" data-say="shower">shower</span> começa com o som “ch” e tem o ditongo “áu”: “CHÁ-uer”. Não é “xóuer” nem “chóver”.',
     cultura:'<span class="en" data-say="hop in the shower">“hop in the shower”</span> (literalmente “pular no chuveiro”) é o jeito informal e comuníssimo de dizer que vai tomar banho rápido.'
   },
 

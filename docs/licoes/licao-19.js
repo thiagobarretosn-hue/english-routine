@@ -84,7 +84,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"on THÂRZ-deis ai du KÁR-di-ôu",
     fraseIpa:"/ɒn ˈθɜːrzdeɪz aɪ duː ˈkɑːrdioʊ/",
-    notaPron:'<span class="en" data-say="Thursday">Thursday</span> começa com o som <strong>/θ/</strong> (língua entre os dentes, como em “teeth”), não com “t” nem “f”: “THÂRZ-dei”.',
+    notaPron:'<span class="en" data-say="Thursday">Thursday</span> começa com o som <strong>th</strong> (língua entre os dentes, como em “teeth”), não com “t” nem “f”: “THÂRZ-dei”.',
     cultura:'Não confunda <span class="en" data-say="Thursday">Thursday</span> (quinta, com “th”) e <span class="en" data-say="Tuesday">Tuesday</span> (terça, com “t”). Os dois começam parecido na escrita e confundem muito brasileiro.'
   },
 
@@ -92,7 +92,7 @@ window.LIVRO.registrar({
     { tipo:"bad", texto:"I make cardio.", nota:"Exercício se <strong>do</strong>, não “make”: I do cardio." },
     { tipo:"good", en:"I do cardio.", nota:"—" },
     { tipo:"bad", texto:"He do cardio.", nota:"3ª pessoa de do é <strong>does</strong>: He does cardio." },
-    { tipo:"bad", texto:"Thursday com “t” no começo.", nota:"É o som /θ/ (th): <strong>THÂRZ-dei</strong>." }
+    { tipo:"bad", texto:"Thursday com “t” no começo.", nota:"É o som do <strong>th</strong>: <strong>THÂRZ-dei</strong>." }
   ],
 
   dica: {
@@ -133,7 +133,7 @@ window.LIVRO.registrar({
     "<strong>do</strong> = fazer atividades (do cardio, do yoga); <strong>make</strong> = criar.",
     "3ª pessoa irregular: do → <strong>does</strong>; passado → <strong>did</strong>.",
     "<strong>Do you do…?</strong> — o primeiro é ajudante, o segundo é o verbo.",
-    "<strong>Thursday</strong> = som /θ/ (“THÂRZ-dei”), diferente de Tuesday.",
+    "<strong>Thursday</strong> = som do <strong>th</strong> (“THÂRZ-dei”), diferente de Tuesday.",
     "<strong>cardio</strong> = treino aeróbico (corrida, bike, esteira)."
   ]
 });

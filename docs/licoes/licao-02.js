@@ -86,7 +86,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"ai brâsh mai títh áfter ai uêik âp",
     fraseIpa:"/aɪ brʌʃ maɪ tiːθ ˈæftər aɪ weɪk ʌp/",
-    notaPron:'O <strong>th</strong> de <span class="en" data-say="teeth">teeth</span> é o som /θ/: ponta da língua entre os dentes, soprando — não é “t” nem “f”. E cuidado: singular é <span class="en" data-say="tooth">tooth</span> (um dente), plural é <span class="en" data-say="teeth">teeth</span> (dentes), irregular.',
+    notaPron:'O <strong>th</strong> de <span class="en" data-say="teeth">teeth</span> é o som do <strong>th</strong>: ponta da língua entre os dentes, soprando — não é “t” nem “f”. E cuidado: singular é <span class="en" data-say="tooth">tooth</span> (um dente), plural é <span class="en" data-say="teeth">teeth</span> (dentes), irregular.',
     cultura:'Nos EUA, <span class="en" data-say="brush your teeth">brush your teeth</span> é a frase clássica que todo pai fala pro filho antes de dormir. E <span class="en" data-say="brush up on">brush up on</span> algo (“brush up on my Spanish”) significa <em>revisar</em> — é exatamente o que você está fazendo com o inglês agora.'
   },
 

@@ -86,7 +86,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"on MÂN-deis ai trêin tchést, CHÔUL-ders, end TRÁI-seps",
     fraseIpa:"/ɒn ˈmʌndeɪz aɪ treɪn tʃɛst ˈʃoʊldərz ænd ˈtraɪsɛps/",
-    notaPron:'<span class="en" data-say="chest">chest</span> começa com “tch” (/tʃ/), como em “tchau”. E <span class="en" data-say="shoulders">shoulders</span> tem o “sh” (/ʃ/) + ditongo “ôu”: “CHÔUL-ders”.',
+    notaPron:'<span class="en" data-say="chest">chest</span> começa com “tch”, como em “tchau”. E <span class="en" data-say="shoulders">shoulders</span> tem o “sh” + ditongo “ôu”: “CHÔUL-ders”.',
     cultura:'A divisão de treino que você faz (peito/ombro/tríceps num dia) chama-se <span class="en" data-say="push day">push day</span> (dia de empurrar). Os outros são <span class="en" data-say="pull day">pull day</span> (puxar) e <span class="en" data-say="leg day">leg day</span> (perna).'
   },
 

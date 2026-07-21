@@ -85,7 +85,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"ai gôu tu dâ djim ét uân pí-ém",
     fraseIpa:"/aɪ ɡoʊ tu ðə dʒɪm æt wʌn ˌpiː ˈɛm/",
-    notaPron:'<span class="en" data-say="gym">gym</span> começa com o som “dj” (/dʒ/), igual ao “j” de “jeans”: “djim”. E <span class="en" data-say="go">go</span> é “gôu”, com ditongo, não “gô”.',
+    notaPron:'<span class="en" data-say="gym">gym</span> começa com o som “dj”, igual ao “j” de “jeans”: “djim”. E <span class="en" data-say="go">go</span> é “gôu”, com ditongo, não “gô”.',
     cultura:'<span class="en" data-say="a.m.">a.m.</span> = antes do meio-dia (manhã); <span class="en" data-say="p.m.">p.m.</span> = depois do meio-dia (tarde/noite). Nos EUA o relógio é de 12 horas: 1 p.m. = 13h, 8 p.m. = 20h.'
   },
 

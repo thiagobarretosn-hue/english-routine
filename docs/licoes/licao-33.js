@@ -84,7 +84,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"áfter dâ guêim, ai gôu bék rôum end têik â CHÁ-uer",
     fraseIpa:"/ˈæftər ðə ɡeɪm aɪ ɡoʊ bæk hoʊm ænd teɪk ə ˈʃaʊər/",
-    notaPron:'<span class="en" data-say="game">game</span> é “guêim”, com o ditongo “êi” (não “gêime” nem “gãme”). O “a” de game é o mesmo /eɪ/ de wake, make, take.',
+    notaPron:'<span class="en" data-say="game">game</span> é “guêim”, com o ditongo “êi” (não “gêime” nem “gãme”). O “a” de game é o mesmo “êi” de wake, make, take.',
     cultura:'Nos EUA, <span class="en" data-say="game">game</span> é a palavra padrão para partida; no inglês britânico, esportes como futebol usam <span class="en" data-say="match">match</span>. Os dois se entendem, mas “game” é mais comum.'
   },
 

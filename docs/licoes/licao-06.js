@@ -86,7 +86,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"ai uârk frâm rôum",
     fraseIpa:"/aɪ wɜːrk frʌm hoʊm/",
-    notaPron:'<span class="en" data-say="home">home</span> tem o ditongo /oʊ/ = “ôu” (rôum), não “rôm”. E o <strong>h</strong> é aspirado, com sopro.',
+    notaPron:'<span class="en" data-say="home">home</span> tem o ditongo “ôu” (rôum), não “rôm”. E o <strong>h</strong> é aspirado, com sopro.',
     cultura:'⚠️ <strong>Falso amigo:</strong> em inglês, <span class="en" data-say="home office">home office</span> é o <em>cômodo</em> (o escritório dentro de casa), <strong>não</strong> a modalidade de trabalho. Para dizer que você trabalha de casa, use <span class="en" data-say="work from home">work from home</span> ou <span class="en" data-say="work remotely">work remotely</span> — nunca “I do home office”.'
   },
 

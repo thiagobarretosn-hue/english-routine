@@ -85,7 +85,7 @@ window.LIVRO.registrar({
     ],
     fraseSoa:"ai kuk SÂM-thing DÍ-fe-rent évri dei",
     fraseIpa:"/aɪ kʊk ˈsʌmθɪŋ ˈdɪfərənt ˈɛvri deɪ/",
-    notaPron:'<span class="en" data-say="something">something</span> tem o som /θ/ (th) no meio: “SÂM-thing”. E o <strong>some</strong> soa “sâm” (o mesmo /ʌ/ de up).',
+    notaPron:'<span class="en" data-say="something">something</span> tem o som do <strong>th</strong> no meio: “SÂM-thing”. E o <strong>some</strong> soa “sâm” (o mesmo “â” de up).',
     cultura:'Perguntas do tipo <span class="en" data-say="Do you want something to eat?">“Do you want something to eat?”</span> (quer algo pra comer?) usam essa mesma estrutura: something + to + verbo.'
   },
 
