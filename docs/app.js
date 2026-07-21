@@ -394,7 +394,10 @@
       var s=document.createElement('script');
       s.src='licoes/'+sid+'.js';
       s.onload=function(){var full=bySlug(sid);(loading[sid]||[]).forEach(function(fn){fn(full);});loading[sid]=null;};
-      s.onerror=function(){(loading[sid]||[]).forEach(function(fn){fn(null);});loading[sid]=null;};
+      s.onerror=function(){
+        try{removerLicao(L);buildTOC();}catch(e){}   // arquivo não existe mais
+        (loading[sid]||[]).forEach(function(fn){fn(null);});loading[sid]=null;
+      };
       document.head.appendChild(s);
     });
   }
@@ -587,11 +590,49 @@
     LIVRO.licoes.forEach(function(L){if(L.meta&&L.meta.licao>maior)maior=L.meta.licao;});
     var limite=maior+60, faltas=0, n=maior+1, achou=0;
     (function passo(){
-      if(faltas>=3||n>limite){ if(achou)buildTOC(); return; }
+      if(faltas>=3||n>limite){ if(achou)buildTOC(); verificarRemovidas(); return; }
       probeLicao(n).then(function(ok){
         if(ok){faltas=0;achou++;buildTOC();} else {faltas++;}
         n++; passo();
       });
+    })();
+  }
+
+  /* Some do menu quando o arquivo da lição é apagado do repositório.
+     Só conclui em resposta 404 explícita — erro de rede/offline não remove nada. */
+  function apagaDoCache(sid){
+    if(!window.caches)return;
+    caches.keys().then(function(ks){
+      ks.forEach(function(k){caches.open(k).then(function(c){c.delete('licoes/'+sid+'.js');});});
+    });
+  }
+  /* Arquivo apagado do repositório: tira a lição da lista (some do menu) e
+     limpa o cache. Diferente de "ainda não escrita", que continua com 🔒. */
+  function removerLicao(L){
+    var idx=LIVRO.licoes.indexOf(L);
+    if(idx>=0)LIVRO.licoes.splice(idx,1);
+    apagaDoCache(id(L));
+  }
+  function verificarRemovidas(){
+    if(navigator.onLine===false)return;
+    var lista=ordered().filter(function(L){return L.disponivel;}), mudou=false, i=0;
+    function checar(L){
+      var sid=id(L);
+      return fetch('licoes/'+sid+'.js',{method:'HEAD',cache:'no-store'}).then(function(r){
+        if(r&&r.status===404){ removerLicao(L); mudou=true; }
+      }).catch(function(){});   // offline ou falha de rede: não conclui nada
+    }
+    (function lote(){
+      if(i>=lista.length){
+        if(mudou){
+          buildTOC();
+          var atual=bySlug((location.hash||'').replace('#',''));
+          if(atual&&!atual.disponivel)location.hash=firstSlug();   // estava vendo a que sumiu
+        }
+        return;
+      }
+      var parte=lista.slice(i,i+6); i+=6;
+      Promise.all(parte.map(checar)).then(lote);
     })();
   }
 

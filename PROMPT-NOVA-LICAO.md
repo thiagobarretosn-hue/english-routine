@@ -257,3 +257,20 @@ Se você vir qualquer coisa da coluna ❌, o encoding quebrou:
 - Recarregue o app: a lição aparece sozinha.
 
 **Se não aparecer:** confira o nome do arquivo, se começa com `window.LIVRO.registrar({` e fecha com `});`, se `meta.licao` bate com o número do arquivo, e se o número é no máximo 2 acima da última lição existente.
+
+# Removendo uma lição
+
+**Apague o arquivo** `docs/licoes/licao-NN.js` e dê `git push`. Só isso.
+
+O app confere as lições a cada abertura: ao ver que o arquivo sumiu do servidor, ele **tira a lição do menu, limpa o cache offline** e, se você estivesse justamente nela, te leva para outra. Vale tanto para as lições do sumário (1–46) quanto para as que você adicionou depois.
+
+> Só remove com resposta **404 confirmada** do servidor. Se você estiver sem internet, nada é apagado — ele mantém tudo que já estava salvo.
+
+# Conferindo antes de publicar
+
+```
+python validar-licao.py docs/licoes/licao-48.js --fix   # conserta acentos e valida
+python validar-licao.py --all                           # confere o livro inteiro
+```
+
+O validador acusa: acentos quebrados, nome de arquivo errado, `meta.licao` trocado, campo obrigatório faltando, IPA e HTML em campo que o app escapa. **Sem `--fix` ele não altera nada.**

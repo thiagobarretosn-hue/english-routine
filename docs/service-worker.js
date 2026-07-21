@@ -6,7 +6,7 @@
      escritos; entram no cache sob demanda e ficam disponíveis offline.
    Publicar lição nova NÃO exige mexer aqui — o network-first do _indice.js
    traz a lista atualizada e a lição é cacheada quando aberta. */
-var CACHE = 'eng-routine-v3';
+var CACHE = 'eng-routine-v4';
 var SHELL = [
   '.', 'index.html', 'styles.css', 'app.js', 'manifest.json', 'licoes/_indice.js',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png'
@@ -50,14 +50,20 @@ self.addEventListener('fetch', function(e){
     return;
   }
 
-  // CACHE-FIRST (lições, ícones, etc.)
+  // CACHE-FIRST com revalidação em 2º plano (lições, ícones).
+  // Responde rápido do cache, mas confere na rede: se o servidor devolver 404,
+  // a lição foi apagada do repositório — então some do cache também.
   e.respondWith(
     caches.match(e.request).then(function(hit){
-      if(hit)return hit;
-      return fetch(e.request).then(function(res){
-        if(res&&res.status===200){var copy=res.clone();caches.open(CACHE).then(function(c){c.put(e.request,copy);});}
+      var rede = fetch(e.request).then(function(res){
+        if(res&&res.status===200){
+          var copy=res.clone(); caches.open(CACHE).then(function(c){c.put(e.request,copy);});
+        } else if(res&&res.status===404){
+          caches.open(CACHE).then(function(c){c.delete(e.request);});
+        }
         return res;
-      });
+      }).catch(function(){return hit;});
+      return hit || rede;
     })
   );
 });
