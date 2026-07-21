@@ -42,7 +42,7 @@ Apague `docs/licoes/licao-NN.js` e faça o commit. O app percebe que o arquivo s
 ## Conferir antes de publicar
 
 ```bash
-python validar-licao.py docs/licoes/licao-48.js --fix   # conserta acentos e valida
+python validar-licao.py docs/licoes/licao-47.js --fix   # conserta acentos e valida
 python validar-licao.py --all                           # confere o livro inteiro
 ```
 

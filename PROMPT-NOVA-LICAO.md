@@ -254,7 +254,7 @@ Se você vir qualquer coisa da coluna ❌, o encoding quebrou:
 
 ## 3. Nome e publicação
 
-- Nome exato: **`docs/licoes/licao-NN.js`** — minúsculo, sem acento, com hífen, **dois dígitos** (`licao-48.js`).
+- Nome exato: **`docs/licoes/licao-NN.js`** — minúsculo, sem acento, com hífen, **dois dígitos** (`licao-47.js`).
 - `git add . && git commit -m "lição NN" && git push`
 - Recarregue o app: a lição aparece sozinha.
 
@@ -271,7 +271,7 @@ O app confere as lições a cada abertura: ao ver que o arquivo sumiu do servido
 # Conferindo antes de publicar
 
 ```
-python validar-licao.py docs/licoes/licao-48.js --fix   # conserta acentos e valida
+python validar-licao.py docs/licoes/licao-47.js --fix   # conserta acentos e valida
 python validar-licao.py --all                           # confere o livro inteiro
 ```
 
