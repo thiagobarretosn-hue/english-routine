@@ -237,6 +237,8 @@ window.LIVRO.registrar({
 
 Baixar costuma quebrar os acentos e o nome. **Selecione o bloco de código, copie e cole** num editor.
 
+> ✅ **O caminho mais seguro (testado):** cole o conteúdo direto no **site do GitHub** — *Add file → Create new file* (ou *Upload files*), nomeie `docs/licoes/licao-NN.js` e commite por lá. Os acentos chegam intactos, sem passar pelo encoding do seu PC.
+
 ## 2. Salve como UTF-8
 
 No VS Code: canto inferior direito → clique no encoding → *Save with Encoding* → **UTF-8**.
