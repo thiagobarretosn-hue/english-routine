@@ -146,6 +146,7 @@ window.LIVRO.registrar({
 5. Use **aspas duplas** para as strings e escape apóstrofos quando necessário (`"I don't..."` funciona; dentro de string com aspas simples, use `\'`).
 6. Mantenha o **inglês natural** (como um americano fala), não a tradução literal.
 7. Escreva as explicações **em português correto e com acentuação**.
+8. **Acentuação e encoding (UTF-8).** O texto vai direto para a tela, então os acentos precisam sair corretos: `ç`, `ã`, `é`, `à`, `ê`. **Nunca** entregue o arquivo com caracteres quebrados do tipo `LiÃ§Ã£o`, `inglÃªs`, `hoje Ã  noite`, `â€œ` — isso é UTF-8 lido como Latin-1 e apareceria assim para o aluno. Use aspas tipográficas normais (`“ ”`) e escreva os acentos diretamente (não use entidades HTML como `&ccedil;`).
 
 ## O que me entregar
 
@@ -161,8 +162,29 @@ Só o **conteúdo do arquivo `.js`**, pronto para salvar. Sem explicações ante
 
 # Depois de gerar
 
-1. Salve como `docs/licoes/licao-NN.js`.
+## ⚠️ Antes de salvar: confira o encoding
+
+Este é **o erro mais comum**. Se a IA (ou o download) entregar o texto assim:
+
+| ❌ quebrado | ✅ correto |
+|---|---|
+| `LiÃ§Ã£o 47` | `Lição 47` |
+| `hoje Ã  noite` | `hoje à noite` |
+| `inglÃªs` | `inglês` |
+| `âuilâ` | `“uil”` |
+
+…o arquivo está em **encoding errado** e esses símbolos vão aparecer na tela do aluno.
+
+**Como resolver:** copie o texto da tela da IA (em vez de baixar o arquivo) e cole num editor salvando como **UTF-8**. No VS Code: canto inferior direito → clique no encoding → *Save with Encoding* → **UTF-8**.
+
+## Salvando
+
+1. Salve como **`docs/licoes/licao-NN.js`** — exatamente assim: minúsculo, sem acento, com hífen e **dois dígitos** (`licao-47.js`, não `lição 47.js` nem `li_o_47.js`).
 2. `git add . && git commit -m "nova lição NN" && git push`
 3. Abra o app e recarregue — a lição aparece no menu sozinha.
 
-**Dica:** se a lição não aparecer, confira (a) o nome do arquivo com dois dígitos, (b) se o arquivo começa com `window.LIVRO.registrar({` e termina com `});`, e (c) se o número em `meta.licao` bate com o do nome do arquivo.
+**Se a lição não aparecer, confira:**
+- (a) o **nome do arquivo** com dois dígitos e hífen;
+- (b) se começa com `window.LIVRO.registrar({` e termina com `});`;
+- (c) se `meta.licao` bate com o número do nome do arquivo;
+- (d) se o número é **maior** que o da última lição existente (ou no máximo 2 acima — o app tolera pular até 2 números).
