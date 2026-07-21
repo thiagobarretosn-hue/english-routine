@@ -567,6 +567,34 @@
   function openDrawer(){$('#drawer').classList.add('on');$('#scrim').classList.add('on');}
   function closeDrawer(){$('#drawer').classList.remove('on');$('#scrim').classList.remove('on');}
 
+  /* ---------- Auto-descoberta de lições novas ----------
+     Basta jogar um arquivo licoes/licao-NN.js na pasta: o app procura
+     números acima do último conhecido e registra sozinho (o próprio
+     arquivo traz meta/capítulo). Para depois de 3 faltas seguidas. */
+  function probeLicao(n){
+    return new Promise(function(resolve){
+      var sid='licao-'+String(n).padStart(2,'0');
+      if(bySlug(sid)&&bySlug(sid).carregada)return resolve(true);
+      var s=document.createElement('script');
+      s.src='licoes/'+sid+'.js'; s.async=true;
+      s.onload=function(){resolve(true);};
+      s.onerror=function(){resolve(false);};
+      document.head.appendChild(s);
+    });
+  }
+  function descobrirNovas(){
+    var maior=0;
+    LIVRO.licoes.forEach(function(L){if(L.meta&&L.meta.licao>maior)maior=L.meta.licao;});
+    var limite=maior+60, faltas=0, n=maior+1, achou=0;
+    (function passo(){
+      if(faltas>=3||n>limite){ if(achou)buildTOC(); return; }
+      probeLicao(n).then(function(ok){
+        if(ok){faltas=0;achou++;buildTOC();} else {faltas++;}
+        n++; passo();
+      });
+    })();
+  }
+
   /* ---------- Boot ---------- */
   function boot(){
     // topbar
@@ -592,6 +620,8 @@
     // rotas
     window.addEventListener('hashchange',function(){show((location.hash||'').replace('#',''));});
     show((location.hash||'').replace('#',''));
+    // procura lições novas em segundo plano (não atrasa a lição atual)
+    setTimeout(descobrirNovas,1200);
 
     // PWA install
     var deferred=null;
